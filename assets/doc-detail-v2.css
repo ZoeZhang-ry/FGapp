@@ -1,4 +1,4 @@
-/* V2 business-record detail: same cool-white surface as the unified home lists.
+/* V2 docs detail: same cool-white surface as the unified home lists.
    Visual layer only; all business DOM, text and typography stay inherited. */
 #fusionLayer.doc-detail-v2 {
   --dv-blue:#1552a3; --dv-title:#172334; --dv-ink:#172334; --dv-muted:#63718a;
@@ -9,10 +9,10 @@
     var(--dv-bg);
 }
 #fusionLayer.doc-detail-v2 .fusion-layer-head {
-  background:transparent; border-bottom:0; box-shadow:none; backdrop-filter:none;
+  background:#fff; border-bottom:1px solid var(--dv-line); box-shadow:none; backdrop-filter:none;
   padding-right:88px;
 }
-#fusionLayer.doc-detail-v2 .fusion-layer-head>button {color:var(--dv-blue); background:transparent}
+#fusionLayer.doc-detail-v2 .fusion-layer-head>button {color:var(--dv-title); background:transparent}
 #fusionLayer.doc-detail-v2 .fusion-layer-head h2 {color:var(--dv-title)}
 #fusionLayer.doc-detail-v2 .fusion-layer-body {
   background:transparent;
@@ -94,7 +94,7 @@ body.v4-dark #fusionLayer.doc-detail-v2 {
   --dv-good:#a0d9be; --dv-good-bg:#28463d;
   background:radial-gradient(ellipse 90% 46% at 50% 3%, #20394e, transparent), var(--dv-bg);
 }
-body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-head,
+body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-head {background:var(--dv-card); border-bottom-color:var(--dv-line)}
 body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-body {background:transparent}
 body.v4-dark #fusionLayer.doc-detail-v2 .v5-detail-heading,
 body.v4-dark #fusionLayer.doc-detail-v2 .v5-card {background:var(--dv-card); border-color:var(--dv-line); box-shadow:none}
@@ -116,4 +116,5 @@ body.v4-dark #fusionLayer.doc-detail-v2 .v5-notice {background:#203145; color:#b
 }
 
 /* Match the shared list environment chip without changing its warning meaning. */
-body:has(#fusionLayer.doc-detail-v2.show .v5-page[data-v5-view="detail"]) .demo-env-badge {top:calc(16px + env(safe-area-inset-top));background:#ffffffb8;color:#172334;border-color:transparent;box-shadow:none}
+body:has(#fusionLayer.doc-detail-v2.show .v5-page[data-v5-view="detail"]) .demo-env-badge {top:calc(16px + env(safe-area-inset-top));background:#1552a3;color:#fff;border-color:transparent;box-shadow:none}
+body.v4-dark:has(#fusionLayer.doc-detail-v2.show .v5-page[data-v5-view="detail"]) .demo-env-badge {background:#28568e}

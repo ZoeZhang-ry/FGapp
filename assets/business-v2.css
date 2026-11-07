@@ -1,0 +1,80 @@
+/* Stage 1 v2 cool-white surface for workflow actions, confirmations, receipts,
+   reading and the shared my-process list. Visual layer only: variables are remapped
+   on top of assets/doc-workflow/page.css; business DOM, typography and handlers stay inherited. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-reader,.my-process-list) {
+  --dw-bg:#f7fafe; --dw-card:#ffffff; --dw-border:#e4ebf4; --dw-blue:#1552a3;
+  --dw-ink:#172334; --dw-title:#172334; --dw-muted:#63718a; --dw-soft:#e5f1fd;
+}
+#fusionLayer.doc-receipt {
+  --dr-bg:#f7fafe; --dr-card:#ffffff; --dr-line:#e4ebf4; --dr-ink:#172334;
+  --dr-title:#172334; --dr-muted:#63718a; --dr-blue:#1552a3; --dr-soft:#e5f1fd;
+}
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) {
+  background:
+    radial-gradient(ellipse 90% 46% at 50% 3%, rgba(202,229,252,.72), rgba(227,241,253,.32) 58%, transparent 100%),
+    #f7fafe;
+}
+body.v4-dark #fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) {
+  background:radial-gradient(ellipse 90% 46% at 50% 3%, #20394e, transparent), #111d2d;
+}
+
+/* Top-bar back buttons stay transparent on every business surface (user request 11-08). */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) .fusion-layer-head>button,
+#fusionLayer.doc-detail-v2 .fusion-layer-head>button {background:transparent; border-radius:0; justify-content:flex-start}
+
+/* v2 card geometry: 16px radius with the two-layer soft shadow. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) :is(.v5-card,.v5-row,.v5-reading,.v5-empty) {
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(42,80,135,.055), 0 1px 3px rgba(42,80,135,.025);
+}
+#fusionLayer:is(.doc-action,.doc-handle) :is(.v5-detail-heading,.v5-title) {
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(42,80,135,.055), 0 1px 3px rgba(42,80,135,.025);
+}
+body.v4-dark #fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) :is(.v5-card,.v5-row,.v5-reading,.v5-empty),
+body.v4-dark #fusionLayer:is(.doc-action,.doc-handle) :is(.v5-detail-heading,.v5-title) {box-shadow:none}
+
+/* v2 buttons and inputs. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) .v5-btn {
+  border-color:#cadef5; border-radius:11px;
+}
+#fusionLayer.doc-handle .v5-field input,
+#fusionLayer.doc-handle .v5-field select,
+#fusionLayer.doc-handle .v5-field textarea {border-color:#c9ddf3; border-radius:11px}
+#fusionLayer.doc-handle .v5-field input:focus,
+#fusionLayer.doc-handle .v5-field select:focus,
+#fusionLayer.doc-handle .v5-field textarea:focus {outline:2px solid rgba(21,82,163,.28); outline-offset:1px; border-color:var(--dw-blue)}
+
+/* v2 badges: squared-soft chip with the inset hairline. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-badge {
+  border-radius:6px; box-shadow:inset 0 0 0 1px rgba(155,195,239,.34);
+}
+#fusionLayer:is(.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-badge.good {
+  box-shadow:inset 0 0 0 1px rgba(146,199,175,.38);
+}
+
+/* My-process list: v2 pill tabs with the short underline indicator. */
+#fusionLayer.my-process-list .v5-tabs {
+  border:0; border-radius:13px; padding:0 4px; overflow:hidden;
+  background:rgba(255,255,255,.7); box-shadow:inset 0 0 0 1px rgba(225,235,245,.58);
+}
+#fusionLayer.my-process-list .v5-tabs button {position:relative; border-bottom-color:transparent}
+#fusionLayer.my-process-list .v5-tabs button.on {border-bottom-color:transparent; font-weight:650}
+#fusionLayer.my-process-list .v5-tabs button.on::after {
+  content:""; position:absolute; left:50%; bottom:8px; width:18px; height:2px;
+  transform:translateX(-50%); border-radius:2px; background:var(--dw-blue);
+}
+#fusionLayer.my-process-list .v5-chips button {border-radius:9px}
+#fusionLayer.my-process-list .v5-search input {border-radius:12px}
+#fusionLayer.my-process-list .v5-search button {border-radius:11px}
+#fusionLayer.my-process-list .v5-pager button {border-radius:11px; border-color:var(--dw-border)}
+body.v4-dark #fusionLayer.my-process-list .v5-tabs {background:#203145; box-shadow:inset 0 0 0 1px #34445a}
+
+/* v2 focus ring shared across the five surfaces. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) :is(.v5-btn,.v5-row,.v5-search button,.v5-chips button,.v5-tabs button,.v5-pager button,.v5-attachment,.v5-return-link):focus-visible {
+  outline:2px solid var(--dw-blue); outline-offset:2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) :is(.v5-card,.v5-row,.v5-reading) {transition:none}
+}
