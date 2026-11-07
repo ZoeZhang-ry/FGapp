@@ -1,3 +1,5 @@
+2026年11月8日第十三轮（微信白边）：用户微信打开页面一侧露白。根因：手机壳方案用100vw收口，X5/WK内核中100vw可比可见视口宽数像素，html无底色而.phone左对齐，差值露白。修复ui-v2-system.css：≤499px时html/body宽100%+overflow-x hidden，.phone强制100%/100%（含:has的390px定宽页）。chk16实测375/390/393/412/428五宽度phone满宽、文档无横向溢出、公文列表页同样满宽，ALL PASS。已提交fd8b8c9并推送FGapp（origin仓库迁移提示无碍），Pages自动部署。仅模拟验证，微信真机待用户确认。
+
 2026年11月8日第十二轮：请休假顶栏高度对齐标准页67px（原63px，min-height 58改67，padding-top保持11px+safe区）。chk14实测standard/leave头高均67px、标题中心33/35（居中），ALL PASS，截图r14-leave-67.png。仅Edge仿真，未实机，未发布。
 
 2026年11月8日第十一轮（用户反馈顶部空隙过大）：列表族浮动头与body顶部padding已在16px+safe区带（箭头与标题同行，中心38px实测），本轮确认；请休假页头部为状态栏预留的37px/88px收紧为11px/58px（与标准顶栏一致），状态栏已隐藏。chk12.cjs ALL PASS（docs箭头/标题top均16px、leave头63px高、padding-top 11px、min-height 58px），chk8/chk10/chk11/round5/entry-titles/hero回归通过，截图r12-docs.png、r12-leave.png。仅Edge仿真，未实机，未发布。

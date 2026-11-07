@@ -316,3 +316,16 @@ body.v4-dark #fusionLayer .assistant-shell .v5-search input {background:var(--u2
   html,body{width:100%;overflow-x:hidden}
   body .phone{width:100%!important;max-width:100%!important}
 }
+
+/* 2026-11-08 round 14: assistant composer sits in the flow (sticky to the visible
+   bottom), not an absolute overlay with a reserved band — no more detached gap.
+   With interactive-widget=resizes-content the keyboard pushes it up on focus. */
+#fusionLayer .assistant-shell {min-height:100%;display:flex;flex-direction:column;padding-bottom:10px}
+#fusionLayer .chat-thread {flex:1;padding-bottom:12px}
+#fusionLayer .assistant-shell .assistant-compose-wrap {position:sticky!important;bottom:0!important;margin-top:auto!important;z-index:6}
+#fusionLayer .assistant-shell .assistant-compose {position:sticky!important;bottom:0!important}
+#fusionLayer .assistant-shell .assistant-compose {left:auto!important;right:auto!important;margin-top:auto!important}
+#fusionLayer:has(.assistant-shell) .fusion-layer-body {padding-bottom:0}
+#fusionLayer:has(.assistant-shell) .fusion-layer-body {display:flex;flex-direction:column}
+#fusionLayer .assistant-root,#fusionLayer #assistantRoot {flex:1;display:flex;flex-direction:column;min-height:0}
+#fusionLayer .assistant-shell {flex:1}
