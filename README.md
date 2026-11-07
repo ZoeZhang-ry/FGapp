@@ -1,3 +1,5 @@
+2026年11月8日第十五轮（阅读页动作层级重设计，用户反馈割裂）：返回资料清单独占导航行（纯文字链）；查看要点移入标题白卡内部作为页面唯一主操作（通栏44px主蓝实心）；打开公开原件并入来源通知卡（卡片内带分隔线动作行），不再漂浮。模板仅重排展示节点，文字、href/target与onclick处理器逐字保留（chk18断言处理器原文）。非公开文档无原件链接时来源卡正常。chk18 ALL PASS，chk8/chk17/round5/entry-titles回归通过，截图r18-reader.png。仅Edge仿真，未实机，未发布。
+
 2026年11月8日第十三轮（微信白边）：用户微信打开页面一侧露白。根因：手机壳方案用100vw收口，X5/WK内核中100vw可比可见视口宽数像素，html无底色而.phone左对齐，差值露白。修复ui-v2-system.css：≤499px时html/body宽100%+overflow-x hidden，.phone强制100%/100%（含:has的390px定宽页）。chk16实测375/390/393/412/428五宽度phone满宽、文档无横向溢出、公文列表页同样满宽，ALL PASS。已提交fd8b8c9并推送FGapp（origin仓库迁移提示无碍），Pages自动部署。仅模拟验证，微信真机待用户确认。
 
 2026年11月8日第十二轮：请休假顶栏高度对齐标准页67px（原63px，min-height 58改67，padding-top保持11px+safe区）。chk14实测standard/leave头高均67px、标题中心33/35（居中），ALL PASS，截图r14-leave-67.png。仅Edge仿真，未实机，未发布。

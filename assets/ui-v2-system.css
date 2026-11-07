@@ -329,3 +329,13 @@ body.v4-dark #fusionLayer .assistant-shell .v5-search input {background:var(--u2
 #fusionLayer:has(.assistant-shell) .fusion-layer-body {display:flex;flex-direction:column}
 #fusionLayer .assistant-root,#fusionLayer #assistantRoot {flex:1;display:flex;flex-direction:column;min-height:0}
 #fusionLayer .assistant-shell {flex:1}
+
+/* 2026-11-08 round 15: source reader action hierarchy — back link alone on the nav
+   row, 查看要点 as the page's primary action inside the banner card, the public
+   original link folded into the source notice card. */
+#fusionLayer .v5-source-reader .source-reader-top {margin:2px 0 10px}
+#fusionLayer .source-reader-back {padding:10px 2px;font-size:13px}
+#fusionLayer .v5-source-reader .v5-title .source-ai-btn {display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:12px;padding:0 16px;border:0;border-radius:11px;background:var(--u2-blue);color:#fff;font-size:14px;font-weight:600}
+#fusionLayer .v5-source-reader .v5-notice .v5-source-original {margin:9px 0 0;padding:9px 0 0;border-top:1px solid rgba(21,82,163,.16);min-height:36px;font-size:13px}
+body.v4-dark #fusionLayer .v5-source-reader .v5-title .source-ai-btn {background:#8eb9ea;color:#10222f}
+body.v4-dark #fusionLayer .v5-source-reader .v5-notice .v5-source-original {border-top-color:rgba(184,213,240,.25)}
