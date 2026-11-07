@@ -308,3 +308,11 @@ body.v4-dark #fusionLayer .assistant-shell .v5-search input {background:var(--u2
    is removed everywhere; real devices show the system bar. The head/body offsets
    that reserved its 44px band are collapsed in internal-v2.css. */
 .dp-status,.leave-application-status {display:none!important}
+
+/* 2026-11-08 round 13: WeChat mobile full-bleed. 100vw can compute wider than the
+   visible viewport in X5/WK webviews, leaving a white strip beside the left-aligned
+   phone shell. Use parent-relative 100% and clamp overflow on real phones. */
+@media(max-width:499px){
+  html,body{width:100%;overflow-x:hidden}
+  body .phone{width:100%!important;max-width:100%!important}
+}
