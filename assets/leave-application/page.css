@@ -6,7 +6,7 @@
  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
 }
 #fusionLayer.leave-application::before {content:"";position:absolute;inset:0 0 auto;height:300px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 98% 24%,#5aabff88,transparent 62%),linear-gradient(170deg,#58a7ff,#c3ddff 48%,var(--la-bg) 96%)}
-#fusionLayer.leave-application .fusion-layer-head {position:relative;padding:calc(37px + env(safe-area-inset-top)) 112px 8px 16px;min-height:88px;background:transparent;border:0;gap:8px;color:#fff;backdrop-filter:none;box-shadow:none}
+#fusionLayer.leave-application .fusion-layer-head {position:relative;padding:calc(11px + env(safe-area-inset-top)) 112px 8px 16px;min-height:67px;background:transparent;border:0;gap:8px;color:#fff;backdrop-filter:none;box-shadow:none}
 #fusionLayer.leave-application .fusion-layer-head>button {width:44px;min-width:44px;height:44px;border-radius:13px;background:#497caa66;color:#fff;justify-content:center}
 #fusionLayer.leave-application .fusion-layer-head h2 {font-size:18px;line-height:1.4;text-align:center;overflow:visible;white-space:normal}
 #fusionLayer.leave-application .fusion-layer-head>span {display:none}
@@ -46,7 +46,6 @@
 #fusionLayer.leave-application .v5-notice {font-size:12px;line-height:1.6;background:#edf4ff;border-color:var(--la-border);color:var(--la-muted)}
 #fusionLayer.leave-application .v5-error {font-size:14px}
 body:has(#fusionLayer.leave-application.show) .phone {width:390px;max-width:100vw}
-body:has(#fusionLayer.leave-application.show) .demo-env-badge {top:calc(48px + env(safe-area-inset-top));right:14px;background:#d66566;font-weight:500;box-shadow:none;letter-spacing:0}
 @media(max-width:499px){body:has(#fusionLayer.leave-application.show) .phone{width:100vw}}
 body.bigfont #fusionLayer.leave-application .v5-fields>div,body.bigfont #fusionLayer.leave-application .v5-field>span,body.bigfont #fusionLayer.leave-application .v5-field input,body.bigfont #fusionLayer.leave-application .v5-field select,body.bigfont #fusionLayer.leave-application .v5-field textarea,body.bigfont #fusionLayer.leave-application .v5-btn {font-size:18px;line-height:1.6}
 body.bigfont #fusionLayer.leave-application .v5-fields>div {grid-template-columns:110px minmax(0,1fr)}

@@ -1,0 +1,310 @@
+/* Version-two shared visual system. Business data, fields and handlers stay in index.html. */
+:root {
+  --u2-blue:#1552a3;
+  --u2-blue-strong:#0f4388;
+  --u2-blue-soft:#e5f1fd;
+  --u2-bg:#f7fafe;
+  --u2-bg-ice:#eef6ff;
+  --u2-card:#fff;
+  --u2-ink:#172334;
+  --u2-muted:#63718a;
+  --u2-line:#e4ebf4;
+  --u2-line-blue:#cadef5;
+  --u2-danger:#b64b38;
+  --u2-radius:16px;
+  --u2-shadow:0 5px 18px rgba(42,80,135,.055),0 0 0 1px rgba(225,235,245,.58);
+  --u2-focus:0 0 0 3px rgba(21,82,163,.16);
+}
+
+/* Browse and discovery surfaces use the ice-blue atmosphere. */
+#page-apps,#page-mine {background:var(--u2-bg-ice);color:var(--u2-ink)}
+#page-apps::before,#page-mine::before {
+  content:"";position:absolute;inset:0 0 auto;height:230px;pointer-events:none;
+  background:radial-gradient(circle at 88% 5%,rgba(120,185,245,.32),transparent 47%),linear-gradient(180deg,#e5f2ff 0,#f7fafe 88%);
+}
+#page-apps>* ,#page-mine>* {position:relative}
+
+/* Application shell: no dark hero; the title, search and catalogue share one quiet hierarchy. */
+#page-apps .apps-sticky-shell {background:rgba(238,246,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(202,222,245,.76)}
+#page-apps .apps-v3-head {padding:calc(18px + env(safe-area-inset-top)) 16px 12px;background:transparent;color:var(--u2-ink)}
+#page-apps .apps-title-row h1 {font-size:22px;line-height:1.35;color:var(--u2-ink)}
+#page-apps .apps-title-row p {font-size:12px;line-height:1.5;color:var(--u2-muted);opacity:1}
+#page-apps .apps-search-row {gap:10px;margin-top:12px}
+#page-apps .apps-search {min-height:48px;border:1px solid var(--u2-line-blue);border-radius:15px;background:rgba(255,255,255,.94);box-shadow:0 4px 14px rgba(42,80,135,.05);color:var(--u2-muted)}
+#page-apps .apps-search:focus-within {border-color:var(--u2-blue);box-shadow:var(--u2-focus)}
+#page-apps .apps-search input {font-size:16px;color:var(--u2-ink)}
+#page-apps .apps-search input::placeholder {color:#687a98;opacity:1}
+#page-apps .apps-ai-search {width:48px;height:48px;border:1px solid var(--u2-line-blue);border-radius:15px;background:#fff;color:var(--u2-blue);box-shadow:0 4px 14px rgba(42,80,135,.05)}
+#page-apps .app-catbar {padding:3px 14px 11px;background:transparent;gap:8px}
+#page-apps .app-catbar button {min-height:44px;padding:0 15px;border:1px solid var(--u2-line-blue);border-radius:13px;background:rgba(255,255,255,.72);color:var(--u2-muted);font-size:13px}
+#page-apps .app-catbar button.on {background:#fff;border-color:#9fc4ef;color:var(--u2-blue);box-shadow:inset 0 -2px 0 var(--u2-blue),0 4px 12px rgba(42,80,135,.05)}
+#page-apps .apps-body-v3 {padding:8px 14px 98px;background:transparent}
+#page-apps .apps-side-rail {border:1px solid var(--u2-line);border-radius:15px;background:rgba(255,255,255,.65);padding:5px}
+#page-apps .apps-side-rail button {min-height:48px;border-radius:11px;color:var(--u2-muted)}
+#page-apps .apps-side-rail button.on {background:#fff;color:var(--u2-blue);box-shadow:var(--u2-shadow)}
+#page-apps .app-group-title {margin:4px 3px 10px}
+#page-apps .app-group-title b {color:var(--u2-ink);font-size:15px}
+#page-apps .app-group-title span {color:var(--u2-muted);font-size:11px}
+#page-apps .app-v3,#page-apps .apps-empty {border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#page-apps .app-v3 {min-height:92px;padding:13px 12px}
+#page-apps .app-v3:active {background:#f6faff;transform:translateY(1px)}
+#page-apps .app-v3 i {border-radius:12px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+
+/* Mine shell uses the same browse surface while retaining identity prominence without a dark banner. */
+#page-mine .mine-v4-head {padding:calc(22px + env(safe-area-inset-top)) 16px 18px;background:transparent;color:var(--u2-ink)}
+#page-mine .mine-v4-head::after {right:-75px;top:-100px;background:rgba(84,156,224,.1)}
+#page-mine .mine-v4-avatar {background:#fff;border:1px solid var(--u2-line-blue);color:var(--u2-blue);box-shadow:var(--u2-shadow)}
+#page-mine .mine-v4-profile p,#page-mine .mine-v4-login {color:var(--u2-muted);opacity:1}
+#page-mine .mine-v4-login::before {background:#299866;box-shadow:0 0 0 3px rgba(41,152,102,.12)}
+#page-mine .mine-v4-safe {background:#fff;border:1px solid var(--u2-line-blue);color:var(--u2-blue);box-shadow:var(--u2-shadow)}
+#page-mine .mine-v4-auth span {padding:6px 9px;background:rgba(255,255,255,.86);border:1px solid var(--u2-line-blue);color:var(--u2-blue)}
+#page-mine .mine-v4-body {padding:10px 14px 98px;background:transparent}
+#page-mine .mine-v4-section {margin-bottom:16px}
+#page-mine .mine-v4-section>h2 {margin:0 4px 9px;color:var(--u2-muted);font-size:12px}
+#page-mine .mine-v4-group {border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#page-mine .mine-v4-group button {min-height:60px;padding:10px 13px;background:#fff;border-color:var(--u2-line);color:var(--u2-ink)}
+#page-mine .mine-v4-group button:active {background:#f5f9fe}
+#page-mine .mine-v4-ico {width:38px;height:38px;border-radius:12px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+#page-mine .mine-v4-group b {font-size:14px}
+#page-mine .mine-v4-group span {font-size:11px;color:var(--u2-muted)}
+
+/* Every routed business page receives the shared component vocabulary. */
+#fusionLayer.ui-v2 {--dv-blue:var(--u2-blue);color:var(--u2-ink)}
+#fusionLayer.ui-v2.ui-v2-ice {background:var(--u2-bg-ice)}
+#fusionLayer.ui-v2.ui-v2-ice .fusion-layer-body {background:radial-gradient(circle at 100% 0,rgba(126,188,245,.2),transparent 280px),var(--u2-bg)}
+#fusionLayer.ui-v2.ui-v2-focus,#fusionLayer.ui-v2.ui-v2-focus .fusion-layer-body {background:#fff}
+#fusionLayer.ui-v2 .fusion-layer-head {background:#fff;border-bottom:1px solid var(--u2-line);box-shadow:0 1px 0 rgba(34,60,93,.04)}
+#fusionLayer.ui-v2 .fusion-layer-head>button {width:44px;height:44px;border-radius:12px;background:transparent;color:var(--u2-blue)}
+#fusionLayer.ui-v2 .fusion-layer-head h2 {color:var(--u2-ink)}
+#fusionLayer.ui-v2 .v5-card,#fusionLayer.ui-v2 .v4-card {border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer.ui-v2 .v5-context {color:var(--u2-muted)}
+#fusionLayer.ui-v2 .v5-title h1 {color:var(--u2-ink)}
+#fusionLayer.ui-v2 .v5-title p,#fusionLayer.ui-v2 .v5-caption {color:var(--u2-muted)}
+#fusionLayer.ui-v2 .v5-btn,#fusionLayer.ui-v2 .v5-small-btn {min-height:48px;border:1px solid var(--u2-line-blue);border-radius:12px;background:#fff;color:var(--u2-blue)}
+#fusionLayer.ui-v2 .v5-btn.primary {background:var(--u2-blue);border-color:var(--u2-blue);color:#fff;box-shadow:0 4px 12px rgba(21,82,163,.16)}
+#fusionLayer.ui-v2 button:focus-visible,#page-apps button:focus-visible,#page-mine button:focus-visible,#page-apps input:focus-visible {outline:2px solid var(--u2-blue);outline-offset:2px}
+
+/* Shared list family (2026-11-08): list/browse pages — my-process, home tasks,
+   contacts, assets — speak the same component language as the document-processing
+   list: open borderless chip row, white inset-ring search field, solid blue action.
+   Mode tabs stay pills where a page already pairs them with counters. */
+#fusionLayer.ui-v2-list .v5-search {display:flex;gap:8px;align-items:center;margin:0 2px 10px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+#fusionLayer.ui-v2-list .v5-search input {min-width:0;flex:1;min-height:44px;padding:0 12px;border:0;border-radius:12px;background:#fff;color:var(--u2-ink);font-size:16px;box-shadow:inset 0 0 0 1px rgba(225,235,245,.55),0 3px 12px rgba(44,77,120,.025)}
+#fusionLayer.ui-v2-list .v5-search input::placeholder {color:var(--u2-muted)}
+#fusionLayer.ui-v2-list .v5-search button {flex:none;min-width:64px;min-height:44px;padding:0 14px;border:0;border-radius:11px;background:var(--u2-blue);color:#fff}
+#fusionLayer.ui-v2-list .v5-tabs {padding:5px;border:1px solid var(--u2-line);border-radius:14px;background:rgba(255,255,255,.74)}
+#fusionLayer.ui-v2-list .v5-tabs button {min-height:44px;border-radius:10px;color:var(--u2-muted)}
+#fusionLayer.ui-v2-list .v5-tabs button.on {background:#fff;color:var(--u2-blue);box-shadow:0 2px 9px rgba(42,80,135,.08)}
+#fusionLayer.ui-v2-list .v5-chips {display:flex;gap:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;margin:0 2px 12px;padding:0;border:0;border-radius:0;background:transparent}
+#fusionLayer.ui-v2-list .v5-chips button {flex:0 0 auto;min-height:38px;padding:7px 10px;border:0;border-radius:9px;background:transparent;color:var(--u2-muted);white-space:nowrap;font-size:13px}
+#fusionLayer.ui-v2-list .v5-chips button.on {background:var(--u2-blue-soft);color:var(--u2-blue);font-weight:600;box-shadow:none}
+#fusionLayer.ui-v2-list .v5-pager {margin:16px 2px 8px;gap:8px}
+#fusionLayer.ui-v2-list .v5-pager button {min-height:44px;padding:8px 12px;border:1px solid var(--u2-line);border-radius:11px;background:rgba(255,255,255,.44);color:var(--u2-blue)}
+#fusionLayer.ui-v2-list .v5-pager span {font-size:11px;color:var(--u2-muted)}
+#fusionLayer.ui-v2-list .v5-row {margin-bottom:10px;border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer.ui-v2-list .v5-row:active {background:#f6faff;transform:translateY(1px)}
+#fusionLayer.ui-v2-list .v5-empty {border:1px dashed #abc9ea;border-radius:var(--u2-radius);background:rgba(255,255,255,.72)}
+/* Home full-task list rows join the same card rhythm as the dp rows. */
+#fusionLayer.ui-v2-list .v6-full-task-list {display:flex;flex-direction:column;gap:10px;padding:0;margin:2px 0 4px;border:0;border-radius:0;background:transparent}
+#fusionLayer.ui-v2-list .v6-task-row {padding:10px 12px;border:0;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px rgba(225,235,245,.55),0 5px 18px rgba(44,77,120,.045),0 1px 3px rgba(44,77,120,.025)}
+
+/* Focus pages are deliberately quiet: no decorative ice gradient behind the task. */
+#fusionLayer.ui-v2-form .v5-title {padding-bottom:6px}
+#fusionLayer.ui-v2-form .v5-card {box-shadow:none;border-color:var(--u2-line);margin-bottom:12px}
+#fusionLayer.ui-v2-form .v5-field input,#fusionLayer.ui-v2-form .v5-field select,#fusionLayer.ui-v2-form .v5-field textarea,
+#fusionLayer.ui-v2-review input,#fusionLayer.ui-v2-review select,#fusionLayer.ui-v2-review textarea {min-height:48px;border:1px solid var(--u2-line-blue);border-radius:12px;background:#fff;color:var(--u2-ink);font-size:16px}
+#fusionLayer.ui-v2-form .v5-field textarea,#fusionLayer.ui-v2-review textarea {min-height:104px}
+#fusionLayer.ui-v2-form .v5-field input:focus,#fusionLayer.ui-v2-form .v5-field select:focus,#fusionLayer.ui-v2-form .v5-field textarea:focus,
+#fusionLayer.ui-v2-review input:focus,#fusionLayer.ui-v2-review select:focus,#fusionLayer.ui-v2-review textarea:focus {outline:0;border-color:var(--u2-blue);box-shadow:var(--u2-focus)}
+#fusionLayer.ui-v2-form .v5-actions,#fusionLayer.ui-v2-focus .v5-actions {background:#fff;border-top:1px solid var(--u2-line)}
+
+/* Asset/contact browse families share the list family above; only field dividers differ. */
+#fusionLayer.ui-v2-assets .v5-fields>div,#fusionLayer.ui-v2-contacts .v5-fields>div {border-color:var(--u2-line)}
+
+/* Dashboard and metric families keep visual richness only where it aids scanning. */
+#fusionLayer.ui-v2-dashboard .v5-tabs {padding:5px;border:1px solid var(--u2-line);border-radius:14px;background:rgba(255,255,255,.78)}
+#fusionLayer.ui-v2-dashboard .v5-tabs button {min-height:44px;border-radius:10px;color:var(--u2-muted)}
+#fusionLayer.ui-v2-dashboard .v5-tabs button.on {background:#fff;color:var(--u2-blue);box-shadow:0 2px 9px rgba(42,80,135,.08)}
+#fusionLayer.ui-v2-dashboard .v5-kpi {border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer.ui-v2-dashboard .v5-kpi b {color:var(--u2-blue)}
+#fusionLayer.ui-v2-dashboard .v5-chart-figure,#fusionLayer.ui-v2-metric .v5-chart-figure {border-radius:14px;background:#fff}
+#fusionLayer.ui-v2-dashboard .v5-chart,#fusionLayer.ui-v2-metric .v5-chart {color:var(--u2-blue)}
+#fusionLayer.ui-v2-review .v5-card {box-shadow:none}
+
+body.bigfont #page-apps .app-catbar button,body.bigfont #page-apps .apps-search,
+body.bigfont #page-mine .mine-v4-group button {min-height:52px}
+
+body.v4-dark {
+  --u2-bg:#101923;--u2-bg-ice:#111d29;--u2-card:#182431;--u2-ink:#eef4f9;--u2-muted:#b7c4d1;
+  --u2-line:#2b3a49;--u2-line-blue:#35516d;--u2-blue-soft:#20364b;--u2-blue:#8eb9ea;
+  --u2-shadow:0 5px 18px rgba(0,0,0,.16),0 0 0 1px rgba(60,83,105,.45);
+}
+body.v4-dark #page-apps::before,body.v4-dark #page-mine::before {background:radial-gradient(circle at 88% 5%,rgba(50,94,136,.32),transparent 47%),linear-gradient(180deg,#132638 0,#101923 88%)}
+body.v4-dark #page-apps .apps-sticky-shell {background:rgba(16,25,35,.94);border-color:var(--u2-line)}
+body.v4-dark #page-apps .apps-v3-head,body.v4-dark #page-apps .app-catbar {background:transparent}
+body.v4-dark #page-apps .apps-search,body.v4-dark #page-apps .apps-ai-search,body.v4-dark #page-apps .app-catbar button,
+body.v4-dark #page-apps .apps-side-rail,body.v4-dark #page-apps .app-v3,body.v4-dark #page-mine .mine-v4-avatar,
+body.v4-dark #page-mine .mine-v4-safe,body.v4-dark #page-mine .mine-v4-auth span,body.v4-dark #page-mine .mine-v4-group,
+body.v4-dark #page-mine .mine-v4-group button {background:var(--u2-card);border-color:var(--u2-line);color:var(--u2-ink)}
+body.v4-dark #fusionLayer.ui-v2.ui-v2-ice .fusion-layer-body {background:radial-gradient(circle at 100% 0,rgba(47,93,136,.2),transparent 280px),var(--u2-bg)}
+body.v4-dark #fusionLayer.ui-v2.ui-v2-focus,body.v4-dark #fusionLayer.ui-v2.ui-v2-focus .fusion-layer-body,
+body.v4-dark #fusionLayer.ui-v2 .fusion-layer-head,body.v4-dark #fusionLayer.ui-v2 .v5-card,
+body.v4-dark #fusionLayer.ui-v2 .v4-card,body.v4-dark #fusionLayer.ui-v2-list .v5-row,
+body.v4-dark #fusionLayer.ui-v2-dashboard .v5-kpi {background:var(--u2-card);border-color:var(--u2-line);color:var(--u2-ink)}
+body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-head {background:#1b293a}
+
+@media(min-width:700px) and (max-width:850px) {
+  #page-apps .apps-v3-head,#page-mine .mine-v4-head {padding-left:26px;padding-right:26px}
+  #page-apps .apps-body-v3,#page-mine .mine-v4-body {padding-left:24px;padding-right:24px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  #page-apps *,#page-mine *,#fusionLayer.ui-v2 * {scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+
+/* 2026-11-08 correction: keep the approved dark top bars on the two main shells. */
+#page-apps::before,#page-mine::before {display:none}
+#page-apps .apps-sticky-shell {background:#fff;border-bottom:1px solid var(--u2-line);backdrop-filter:none}
+#page-apps .apps-v3-head {background:linear-gradient(135deg,#173e79,#2e63b4 72%,#4f7cbd);color:#fff}
+#page-apps .apps-title-row h1 {color:#fff}
+#page-apps .apps-title-row p {color:rgba(255,255,255,.78)}
+#page-apps .apps-search {background:rgba(255,255,255,.96);border-color:rgba(255,255,255,.35)}
+#page-apps .apps-ai-search {background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.24);color:#fff;box-shadow:none}
+#page-apps .app-catbar {background:#fff}
+#page-mine .mine-v4-head {background:linear-gradient(145deg,#103f78,#1e68ad);color:#fff}
+#page-mine .mine-v4-head::after {display:block;background:rgba(255,255,255,.055)}
+#page-mine .mine-v4-avatar {background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:none}
+#page-mine .mine-v4-profile p,#page-mine .mine-v4-login {color:rgba(255,255,255,.86)}
+#page-mine .mine-v4-safe {background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.15);color:#fff;box-shadow:none}
+#page-mine .mine-v4-auth span {background:rgba(255,255,255,.13);border-color:transparent;color:#fff}
+body.v4-dark #page-apps .apps-sticky-shell {background:var(--u2-card)}
+body.v4-dark #page-apps .apps-v3-head {background:linear-gradient(135deg,#173e79,#2e63b4 72%,#4f7cbd)}
+body.v4-dark #page-apps .apps-search input::placeholder {color:#91a6bd}
+body.v4-dark #page-apps .apps-ai-search {background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.24);color:#fff}
+body.v4-dark #page-mine .mine-v4-head {background:linear-gradient(145deg,#103f78,#1e68ad)}
+
+/* Supplies lists join the shared home-list family via internal-v2.css scope. */
+
+/* 2026-11-08 unified top bar: every standard business page head uses the app-shell
+   blue gradient with white text; the back button stays transparent. The floating
+   heads of the four home list domains (transparent, no bar) are excluded. */
+#fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head {
+  background:linear-gradient(135deg,#173e79,#2e63b4 72%,#4f7cbd)!important;
+  border-bottom:0!important;box-shadow:none!important;backdrop-filter:none!important;
+}
+#fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head h2 {color:#fff!important}
+#fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head span {color:rgba(255,255,255,.82)!important}
+#fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head>button {background:transparent!important;border-radius:0;color:#fff!important}
+body.v4-dark #fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head {
+  background:linear-gradient(135deg,#173e79,#2e63b4 72%,#4f7cbd)!important;
+}
+
+/* 2026-11-08 round 4: banners must not merge into the page background. Title
+   banners become white cards; tab/chip selectors get a white pill bar on form
+   and AI-review pages. The four home-list floating heads lose their white bar. */
+#fusionLayer.ui-v2 .v5-title {margin:2px 2px 12px;padding:13px 16px;border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer.ui-v2 .v5-title small {color:var(--u2-muted)}
+body.v4-dark #fusionLayer.ui-v2 .v5-title {background:var(--u2-card);border-color:var(--u2-line)}
+#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-tabs,#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-chips {display:flex;gap:0;align-items:center;padding:5px;margin:2px 2px 12px;border:1px solid var(--u2-line);border-radius:14px;background:rgba(255,255,255,.9)}
+#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-tabs button {flex:1 1 0;min-height:44px;border:0;border-bottom:0;border-radius:10px;background:transparent;color:var(--u2-muted)}
+#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-tabs button.on,#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-chips button.on {background:var(--u2-blue-soft);color:var(--u2-blue);border-bottom:0;box-shadow:none}
+body.v4-dark #fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-tabs,body.v4-dark #fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-chips {background:rgba(27,41,58,.9);border-color:var(--u2-line)}
+#fusionLayer.ui-v2.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .fusion-layer-head {background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
+
+/* 2026-11-08 round 5: task pages keep a plain white banner over a quiet grey-blue
+   ground (focus pages previously used a white ground, merging banner and bg). */
+#fusionLayer.ui-v2.ui-v2-focus,#fusionLayer.ui-v2.ui-v2-focus .fusion-layer-body {background:var(--u2-bg)}
+body.v4-dark #fusionLayer.ui-v2.ui-v2-focus,body.v4-dark #fusionLayer.ui-v2.ui-v2-focus .fusion-layer-body {background:var(--u2-bg)}
+
+/* Apps category bar: five equal chips fill one row — nothing clipped, no scrolling needed. */
+#page-apps .app-catbar {display:flex;flex-wrap:nowrap;overflow-x:visible;gap:5px;padding:4px 12px 10px}
+#page-apps .app-catbar button {flex:1 1 0;min-width:0;min-height:40px;padding:0 4px;border-radius:11px;font-size:12px;white-space:nowrap;text-align:center}
+
+/* 2026-11-08 round 6: breathing room on dashboard/metric pages — chips and tab
+   bars keep distance from the top bar, five tabs share one row, buttons clear cards. */
+#fusionLayer.ui-v2-dashboard .v5-chips,#fusionLayer.ui-v2-metric .v5-chips {margin:12px 2px 13px}
+#fusionLayer.ui-v2-dashboard .v5-tabs,#fusionLayer.ui-v2-metric .v5-tabs {display:flex;margin:12px 2px 14px}
+#fusionLayer.ui-v2-dashboard .v5-tabs button,#fusionLayer.ui-v2-metric .v5-tabs button {flex:1 1 0;min-width:0;padding:10px 4px;font-size:13px;white-space:nowrap;text-align:center}
+#fusionLayer.ui-v2-dashboard .v5-btn,#fusionLayer.ui-v2-metric .v5-btn {margin-top:12px}
+#fusionLayer.ui-v2-dashboard .v5-card .v5-btn:first-child,#fusionLayer.ui-v2-metric .v5-card .v5-btn:first-child {margin-top:0}
+
+/* 2026-11-08 round 7: stacked white selector bars need visible separation. */
+#fusionLayer.ui-v2-dashboard .v5-chips,#fusionLayer.ui-v2-metric .v5-chips {margin:14px 2px 16px}
+#fusionLayer.ui-v2-dashboard .v5-tabs,#fusionLayer.ui-v2-metric .v5-tabs {margin:0 2px 16px}
+#fusionLayer.ui-v2-dashboard .v5-chips:has(+.v5-tabs),#fusionLayer.ui-v2-metric .v5-chips:has(+.v5-tabs) {margin-bottom:16px}
+
+/* 2026-11-08 round 8: assistant family alignment. Content, data, handlers and
+   font families stay in index.html; layout and surfaces only. */
+/* B: head meta sits under the global badge on assistant layers — hide it there too. */
+.fusion-layer:not(:has(.v5-page)) .fusion-layer-head>span {display:none}
+
+/* C: welcome toolbar, model/context config and prompt cards join the v2 card language. */
+#fusionLayer .assistant-tools {position:static;z-index:auto;margin:2px 0 12px;padding:10px 12px;background:#fff;border:1px solid var(--u2-line);border-radius:var(--u2-radius);box-shadow:var(--u2-shadow)}
+#fusionLayer .assistant-tool {min-height:44px;padding:8px 14px;border:1px solid var(--u2-line-blue);border-radius:11px;background:#fff;color:var(--u2-blue);font-size:13px}
+#fusionLayer .assistant-tool.primary {background:var(--u2-blue);border-color:var(--u2-blue);color:#fff;font-weight:600}
+#fusionLayer .assistant-config {display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 8px}
+#fusionLayer .assistant-config button {min-height:56px;padding:9px 12px;text-align:left;background:#fff;border:1px solid var(--u2-line);border-radius:12px;box-shadow:none}
+#fusionLayer .assistant-config button small {color:var(--u2-muted);font-size:10px}
+#fusionLayer .assistant-config button b {display:flex;align-items:center;gap:4px;margin-top:4px;color:var(--u2-ink);font-size:12px}
+#fusionLayer .assistant-cap {display:flex;justify-content:space-between;gap:8px;margin:0 0 12px;padding:8px 12px;border-radius:10px;background:var(--u2-blue-soft);color:var(--u2-blue);font-size:11px}
+#fusionLayer .assistant-v4-prompts {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#fusionLayer .assistant-v4-prompts button {min-height:78px;padding:12px;background:#fff;border:1px solid var(--u2-line);border-radius:14px;box-shadow:var(--u2-shadow)}
+#fusionLayer .assistant-v4-prompts button b {color:var(--u2-ink)}
+#fusionLayer .assistant-v4-prompts button span {color:var(--u2-muted)}
+#fusionLayer .assistant-welcome h2 {color:var(--u2-ink)}
+#fusionLayer .assistant-welcome>p {color:var(--u2-muted)}
+#fusionLayer .assistant-boundary {border-radius:10px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+
+/* D: result thread — narrower user bubble, no bottom occlusion, quiet composer. */
+#fusionLayer .assistant-shell {padding-bottom:104px}
+#fusionLayer .chat-msg.user {max-width:82%}
+#fusionLayer .assistant-compose {background:rgba(247,250,254,.96);border-top:1px solid var(--u2-line)}
+#fusionLayer .assistant-compose input {border:1px solid var(--u2-line-blue);border-radius:12px;background:#fff}
+#fusionLayer .assistant-compose .send-btn {border-radius:12px;background:var(--u2-blue)}
+
+/* A: source reader — toolbar inside the flow, banner/notice/sections as v2 cards. */
+#fusionLayer .v5-source-reader {padding-top:2px}
+#fusionLayer .v5-source-reader .source-reader-top {position:static;z-index:auto;margin:2px 0 14px;padding:0;background:transparent;border:0;box-shadow:none}
+#fusionLayer .source-reader-back {min-height:44px;padding:8px 2px;border:0;background:transparent;color:var(--u2-blue);font-size:13px}
+#fusionLayer .source-ai-btn {min-height:44px;padding:0 16px;border:1px solid var(--u2-line-blue);border-radius:11px;background:#fff;color:var(--u2-blue);font-size:13px;font-weight:600}
+#fusionLayer .v5-source-reader .v5-title {margin:0 2px 12px;padding:13px 16px;background:#fff;border:1px solid var(--u2-line);border-radius:var(--u2-radius);box-shadow:var(--u2-shadow)}
+#fusionLayer .v5-source-reader .v5-title h1 {font-size:20px;color:var(--u2-ink)}
+#fusionLayer .v5-source-reader .v5-title p {color:var(--u2-muted)}
+#fusionLayer .v5-source-reader .v5-notice {margin:0 2px 12px;padding:11px 13px;border:0;border-radius:12px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+#fusionLayer .v5-source-reader .v5-source-original {margin:0 2px 12px;color:var(--u2-blue);font-size:13px}
+#fusionLayer .v5-source-reader .v5-source-section {margin:0 2px 12px;padding:14px 16px;border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer .v5-source-reader .v5-source-section>small {display:inline-block;padding:2px 8px;border-radius:6px;background:var(--u2-blue-soft);color:var(--u2-blue);font-size:11px}
+#fusionLayer .v5-source-reader .v5-source-section h2 {margin:9px 0 8px;color:var(--u2-ink)}
+#fusionLayer .v5-source-reader .v5-source-section p {color:var(--u2-ink)}
+
+/* Dark mode: cards switch to the dark surface token. */
+body.v4-dark #fusionLayer .assistant-tools,body.v4-dark #fusionLayer .assistant-config button,
+body.v4-dark #fusionLayer .assistant-v4-prompts button,
+body.v4-dark #fusionLayer .v5-source-reader .v5-title,
+body.v4-dark #fusionLayer .v5-source-reader .v5-source-section,
+body.v4-dark #fusionLayer .assistant-compose input {background:var(--u2-card);border-color:var(--u2-line)}
+body.v4-dark #fusionLayer .assistant-cap,body.v4-dark #fusionLayer .assistant-boundary,
+body.v4-dark #fusionLayer .v5-source-reader .v5-notice,
+body.v4-dark #fusionLayer .v5-source-reader .v5-source-section>small {background:var(--u2-blue-soft);color:#B8D5F0}
+body.v4-dark #fusionLayer .assistant-compose {background:rgba(16,25,35,.96)}
+
+/* 2026-11-08 round 9: assistant result-search page joins the same language. */
+#fusionLayer .assistant-shell .v5-return-link {color:var(--u2-blue);font-size:13px}
+#fusionLayer .assistant-shell .v5-title {margin:2px 0 12px;padding:13px 16px;background:#fff;border:1px solid var(--u2-line);border-radius:var(--u2-radius);box-shadow:var(--u2-shadow)}
+#fusionLayer .assistant-shell .v5-title h1 {font-size:20px;color:var(--u2-ink)}
+#fusionLayer .assistant-shell .v5-title p {color:var(--u2-muted)}
+#fusionLayer .assistant-shell .v5-search {display:flex;gap:8px;align-items:center;margin:0 0 10px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+#fusionLayer .assistant-shell .v5-search input {flex:1;min-width:0;min-height:44px;padding:0 12px;border:0;border-radius:12px;background:#fff;color:var(--u2-ink);font-size:16px;box-shadow:inset 0 0 0 1px rgba(225,235,245,.55),0 3px 12px rgba(44,77,120,.025)}
+#fusionLayer .assistant-shell .v5-search button {flex:none;min-width:64px;min-height:44px;padding:0 14px;border:0;border-radius:11px;background:var(--u2-blue);color:#fff}
+#fusionLayer .assistant-shell .v5-caption {color:var(--u2-muted)}
+#fusionLayer .assistant-shell .assistant-doc-link {border:1px solid var(--u2-line);border-radius:12px;background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer .assistant-shell .v5-pager {margin:16px 2px 8px;gap:8px}
+#fusionLayer .assistant-shell .v5-pager button {min-height:44px;padding:8px 12px;border:1px solid var(--u2-line);border-radius:11px;background:rgba(255,255,255,.44);color:var(--u2-blue)}
+#fusionLayer .assistant-shell .v5-pager span {color:var(--u2-muted)}
+body.v4-dark #fusionLayer .assistant-shell .v5-title,body.v4-dark #fusionLayer .assistant-shell .assistant-doc-link,
+body.v4-dark #fusionLayer .assistant-shell .v5-search input {background:var(--u2-card);border-color:var(--u2-line)}
+
+/* 2026-11-08 round 10: the decorative in-content status bar (9:41 + signal SVG)
+   is removed everywhere; real devices show the system bar. The head/body offsets
+   that reserved its 44px band are collapsed in internal-v2.css. */
+.dp-status,.leave-application-status {display:none!important}

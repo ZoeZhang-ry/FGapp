@@ -116,5 +116,3 @@ body.v4-dark #fusionLayer.doc-detail-v2 .v5-notice {background:#203145; color:#b
 }
 
 /* Match the shared list environment chip without changing its warning meaning. */
-body:has(#fusionLayer.doc-detail-v2.show .v5-page[data-v5-view="detail"]) .demo-env-badge {top:calc(16px + env(safe-area-inset-top));background:#1552a3;color:#fff;border-color:transparent;box-shadow:none}
-body.v4-dark:has(#fusionLayer.doc-detail-v2.show .v5-page[data-v5-view="detail"]) .demo-env-badge {background:#28568e}

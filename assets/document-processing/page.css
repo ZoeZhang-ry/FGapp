@@ -115,7 +115,6 @@
 #fusionLayer.document-processing .dp-search input:focus-visible {outline:0}
 .document-processing button:active:not(:disabled) {filter:brightness(.97)}
 body:has(#fusionLayer.document-processing.show) .phone {width:390px;max-width:100vw}
-body:has(#fusionLayer.document-processing.show) .demo-env-badge {display:none}
 @media(max-width:499px){body:has(#fusionLayer.document-processing.show) .phone{width:100vw}}
 @media(max-width:375px){.document-processing .dp-search{gap:7px}.document-processing .dp-search-field{gap:6px;padding:0 8px}}
 body.v4-dark #fusionLayer.document-processing {--dp-bg:#111d2d;--dp-card:#1b293a;--dp-title:#e4ecf7;--dp-ink:#e4ecf7;--dp-muted:#b1bed1;--dp-blue:#a6caff;--dp-soft:#24384f;--dp-tag:#294565;--dp-line:#34445a}
