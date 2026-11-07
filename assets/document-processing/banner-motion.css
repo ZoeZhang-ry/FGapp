@@ -1,0 +1,23 @@
+/* Four home lists only; original text geometry and typography remain inherited. */
+#fusionLayer.document-processing:has([data-v5-domain="projects"])::before {
+ background:linear-gradient(180deg,#71bcffbb,#acd3ffbb 45%,var(--dp-bg) 90%),url('project-construction.png') center top/100% auto no-repeat;
+}
+#fusionLayer.document-processing:has([data-v5-domain])::before {filter:blur(3px)}
+#fusionLayer.document-processing::before {animation:bb-light 14s ease-in-out infinite alternate;--bb-light-low:.88;--bb-light-high:1}
+body.v4-dark #fusionLayer.document-processing::before {--bb-light-low:.4;--bb-light-high:.45}
+@keyframes bb-light {from{opacity:var(--bb-light-low)}to{opacity:var(--bb-light-high)}}
+.document-processing .business-banner-decoration {right:20px;top:14px;width:90px;height:48px;pointer-events:none}
+.document-processing .business-banner-decoration>svg,
+.document-processing .business-banner-decoration>img {display:block;width:100%;height:100%;pointer-events:none}
+.document-processing .business-banner-decoration * {pointer-events:none}
+.document-processing .dp-row {transition:transform 220ms ease-out,opacity 220ms ease-out}
+.document-processing .dp-row:active {transform:scale(.99)}
+.document-processing .dp-modes button,.document-processing .dp-filters button {transition:color 220ms ease-out,background-color 220ms ease-out}
+.document-processing .dp-modes button.on::after {animation:bb-underline 240ms ease-out}
+@keyframes bb-underline {from{opacity:.4;transform:scaleX(.9)}to{opacity:1;transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){
+ #fusionLayer.document-processing,#fusionLayer.document-processing::before,
+ .document-processing .business-banner-decoration,.document-processing .business-banner-decoration *,
+ .document-processing .dp-row,.document-processing .dp-modes button,.document-processing .dp-modes button::after,.document-processing .dp-filters button {animation:none!important;transition:none!important}
+ .document-processing .dp-row:active {transform:none}
+}

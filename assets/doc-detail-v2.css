@@ -1,0 +1,119 @@
+/* V2 business-record detail: same cool-white surface as the unified home lists.
+   Visual layer only; all business DOM, text and typography stay inherited. */
+#fusionLayer.doc-detail-v2 {
+  --dv-blue:#1552a3; --dv-title:#172334; --dv-ink:#172334; --dv-muted:#63718a;
+  --dv-bg:#f7fafe; --dv-card:#ffffff; --dv-soft:#e5f1fd; --dv-line:#e4ebf4;
+  --dv-good:#26755a; --dv-good-bg:#e8f5ef;
+  background:
+    radial-gradient(ellipse 90% 46% at 50% 3%, rgba(202,229,252,.72), rgba(227,241,253,.32) 58%, transparent 100%),
+    var(--dv-bg);
+}
+#fusionLayer.doc-detail-v2 .fusion-layer-head {
+  background:transparent; border-bottom:0; box-shadow:none; backdrop-filter:none;
+  padding-right:88px;
+}
+#fusionLayer.doc-detail-v2 .fusion-layer-head>button {color:var(--dv-blue); background:transparent}
+#fusionLayer.doc-detail-v2 .fusion-layer-head h2 {color:var(--dv-title)}
+#fusionLayer.doc-detail-v2 .fusion-layer-body {
+  background:transparent;
+  padding:calc(13px + env(safe-area-inset-top)) 13px calc(38px + env(safe-area-inset-bottom));
+}
+#fusionLayer.doc-detail-v2 .v5-context {color:var(--dv-muted)}
+#fusionLayer.doc-detail-v2 .v5-detail-heading {
+  padding:12px;
+  border:1px solid rgba(225,235,245,.62); border-radius:16px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 5px 18px rgba(42,80,135,.055), 0 1px 3px rgba(42,80,135,.025);
+}
+#fusionLayer.doc-detail-v2 .v5-badge {
+  font-size:11px; padding:2px 7px;
+  background:var(--dv-soft); color:var(--dv-blue); border-radius:6px;
+  box-shadow:inset 0 0 0 1px rgba(155,195,239,.34);
+}
+#fusionLayer.doc-detail-v2 .v5-badge.good {background:var(--dv-good-bg); color:var(--dv-good)}
+#fusionLayer.doc-detail-v2 .v5-detail-heading h1 {
+  font-size:18px; line-height:1.5; margin:8px 0;
+}
+#fusionLayer.doc-detail-v2 .v5-detail-heading p {margin-bottom:2px}
+#fusionLayer.doc-detail-v2 .v5-tabs {margin-top:9px}
+#fusionLayer.doc-detail-v2 .v5-tabs {
+  margin-top:2px; padding:0 4px; border:0; border-radius:13px; overflow:hidden;
+  background:rgba(255,255,255,.7); box-shadow:inset 0 0 0 1px rgba(225,235,245,.58);
+}
+#fusionLayer.doc-detail-v2 .v5-tabs button {position:relative; color:var(--dv-muted); border-bottom-color:transparent}
+#fusionLayer.doc-detail-v2 .v5-tabs button.on {color:var(--dv-blue); border-bottom-color:transparent}
+#fusionLayer.doc-detail-v2 .v5-tabs button.on::after {
+  content:""; position:absolute; left:50%; bottom:8px; width:18px; height:2px;
+  transform:translateX(-50%); border-radius:2px; background:var(--dv-blue);
+}
+#fusionLayer.doc-detail-v2 .v5-tabs em {background:var(--dv-soft); color:var(--dv-blue); border-radius:5px}
+#fusionLayer.doc-detail-v2 .v5-card {
+  border:1px solid rgba(225,235,245,.58); border-radius:16px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 5px 18px rgba(42,80,135,.055), 0 1px 3px rgba(42,80,135,.025);
+}
+#fusionLayer.doc-detail-v2 .v5-card h2 {color:var(--dv-title)}
+#fusionLayer.doc-detail-v2 .v5-card h3 {color:var(--dv-title)}
+#fusionLayer.doc-detail-v2 .v5-card p {color:var(--dv-ink)}
+#fusionLayer.doc-detail-v2 .v5-fields>div {border-color:#e7edf5}
+#fusionLayer.doc-detail-v2 .v5-fields dt {color:var(--dv-muted)}
+#fusionLayer.doc-detail-v2 .v5-fields dd {color:var(--dv-ink)}
+#fusionLayer.doc-detail-v2 .v5-attachment {
+  border:1px solid rgba(224,235,245,.62); border-radius:12px;
+  background:#fff; color:var(--dv-ink);
+  box-shadow:0 2px 8px rgba(42,80,135,.03);
+}
+#fusionLayer.doc-detail-v2 .v5-attachment i {background:var(--dv-soft); color:var(--dv-blue); border-radius:6px}
+#fusionLayer.doc-detail-v2 .v5-attachment small {color:var(--dv-muted)}
+#fusionLayer.doc-detail-v2 .v5-flow li {border-color:#e7edf5}
+#fusionLayer.doc-detail-v2 .v5-flow b {color:var(--dv-title)}
+#fusionLayer.doc-detail-v2 .v5-flow span {color:var(--dv-muted)}
+#fusionLayer.doc-detail-v2 .v5-flow li:last-child::before {background:var(--dv-blue)}
+#fusionLayer.doc-detail-v2 .v5-notice {
+  background:#f1f7fd; border-color:#e2eaf5; color:#5d6c85; border-radius:13px;
+}
+#fusionLayer.doc-detail-v2 .v5-return-link {color:var(--dv-blue)}
+#fusionLayer.doc-detail-v2 .v5-actions {background:var(--dv-bg); border-top-color:#e6edf5}
+#fusionLayer.doc-detail-v2 .v5-actions .v5-btn {
+  flex:1 1 0; min-width:0;
+}
+#fusionLayer.doc-detail-v2 .v5-actions .v5-btn.primary {flex:1 1 0}
+#fusionLayer.doc-detail-v2 .v5-btn {
+  border-color:#cadef5; border-radius:11px; background:#fff; color:var(--dv-blue);
+}
+#fusionLayer.doc-detail-v2 .v5-btn.primary {
+  background:var(--dv-blue); border-color:var(--dv-blue); color:#fff;
+}
+#fusionLayer.doc-detail-v2 .v5-btn:focus-visible,
+#fusionLayer.doc-detail-v2 .v5-tabs button:focus-visible,
+#fusionLayer.doc-detail-v2 .v5-attachment:focus-visible,
+#fusionLayer.doc-detail-v2 .v5-return-link:focus-visible {outline:2px solid var(--dv-blue); outline-offset:2px}
+body.v4-dark #fusionLayer.doc-detail-v2 {
+  --dv-bg:#111d2d; --dv-card:#1b293a; --dv-title:#e4ecf7; --dv-ink:#e4ecf7;
+  --dv-muted:#b1bed1; --dv-blue:#a6caff; --dv-soft:#24384f; --dv-line:#34445a;
+  --dv-good:#a0d9be; --dv-good-bg:#28463d;
+  background:radial-gradient(ellipse 90% 46% at 50% 3%, #20394e, transparent), var(--dv-bg);
+}
+body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-head,
+body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-body {background:transparent}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-detail-heading,
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-card {background:var(--dv-card); border-color:var(--dv-line); box-shadow:none}
+body.bigfont #fusionLayer.doc-detail-v2 .v5-detail-heading h1 {font-size:20px}
+body.bigfont #fusionLayer.doc-detail-v2 .v5-detail-heading .v5-badge {font-size:13px; padding:3px 8px}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-tabs {background:#203145; box-shadow:inset 0 0 0 1px var(--dv-line)}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-attachment,
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-btn {background:var(--dv-card); border-color:var(--dv-line); box-shadow:none}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-btn.primary {background:#28568e; border-color:#487bb9; color:#fff}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-fields>div,
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-flow li,
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-notice {border-color:var(--dv-line)}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-notice {background:#203145; color:#b1bed1}
+
+@media (prefers-reduced-motion: reduce) {
+  #fusionLayer.doc-detail-v2 .v5-detail-heading,
+  #fusionLayer.doc-detail-v2 .v5-card,
+  #fusionLayer.doc-detail-v2 .v5-attachment {transition:none}
+}
+
+/* Match the shared list environment chip without changing its warning meaning. */
+body:has(#fusionLayer.doc-detail-v2.show .v5-page[data-v5-view="detail"]) .demo-env-badge {top:calc(16px + env(safe-area-inset-top));background:#ffffffb8;color:#172334;border-color:transparent;box-shadow:none}

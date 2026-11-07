@@ -1,0 +1,111 @@
+/* Shared home business detail, actions, reading, confirmation and receipts. Typography and business DOM remain inherited. */
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) {
+ --dw-bg:#f6f8fc;--dw-card:#fff;--dw-border:#e7edf6;--dw-blue:#1765e8;
+ --dw-ink:#202638;--dw-title:#142039;--dw-muted:#687a98;--dw-soft:#eaf2ff;
+ background:var(--dw-bg);color:var(--dw-ink);
+}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .fusion-layer-head {background:var(--dw-card);border-bottom:1px solid var(--dw-border);box-shadow:none;backdrop-filter:none}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .fusion-layer-head h2 {color:var(--dw-title)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .fusion-layer-head>button {color:var(--dw-title);background:var(--dw-soft);border-radius:12px;justify-content:center}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .fusion-layer-body {background:var(--dw-bg)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-page {color:var(--dw-ink)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-context {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-detail-heading,
+#fusionLayer.doc-action .v5-title {padding:14px;border:1px solid var(--dw-border);border-radius:18px;background:var(--dw-card);box-shadow:0 3px 12px #204e9608;margin-bottom:12px}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) :is(.v5-detail-heading,.v5-title) h1 {color:var(--dw-title)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) :is(.v5-detail-heading,.v5-title) p {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-badge {background:var(--dw-soft);color:var(--dw-blue);border-radius:99px}
+#fusionLayer.doc-detail .v5-badge.good {background:#eaf5ef;color:#287251}
+#fusionLayer.doc-detail .v5-tabs {border-color:var(--dw-border);background:transparent}
+#fusionLayer.doc-detail .v5-tabs button {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-tabs button.on {color:var(--dw-blue);border-bottom-color:var(--dw-blue)}
+#fusionLayer.doc-detail .v5-tabs em {background:var(--dw-soft);color:var(--dw-blue);border-radius:8px}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) :is(.v5-card,.v5-row) {background:var(--dw-card);border-color:var(--dw-border);border-radius:18px;box-shadow:0 3px 12px #204e9608;color:var(--dw-ink)}
+#fusionLayer.doc-detail .v5-card h2,#fusionLayer.doc-action .v5-row strong {color:var(--dw-title)}
+#fusionLayer.doc-detail .v5-fields>div {border-color:var(--dw-border)}
+#fusionLayer.doc-detail .v5-fields dt {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-fields dd {color:var(--dw-ink)}
+#fusionLayer.doc-detail .v5-card p {color:var(--dw-ink)}
+#fusionLayer.doc-detail .v5-attachment {background:var(--dw-card);border-color:var(--dw-border);color:var(--dw-ink);border-radius:12px}
+#fusionLayer.doc-detail .v5-attachment i {color:var(--dw-blue);background:var(--dw-soft)}
+#fusionLayer.doc-detail .v5-attachment small,#fusionLayer.doc-detail .v5-flow span,#fusionLayer.doc-action .v5-row-footer {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-flow li {border-color:var(--dw-border)}
+#fusionLayer.doc-detail .v5-flow li:last-child::before {background:var(--dw-blue)}
+#fusionLayer.doc-detail .v5-notice {background:var(--dw-soft);border-color:var(--dw-border);color:var(--dw-muted)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-actions {background:var(--dw-bg);border-top-color:var(--dw-border)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-btn {background:var(--dw-card);border-color:#b5cdf9;color:var(--dw-blue);border-radius:12px}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-btn.primary {background:var(--dw-blue);border-color:var(--dw-blue);color:#fff}
+#fusionLayer.doc-detail .v5-return-link {color:var(--dw-blue)}
+#fusionLayer.doc-action .v5-list {gap:12px}
+#fusionLayer.doc-action .v5-row-footer {padding-right:16px;position:relative}
+#fusionLayer.doc-action .v5-row-footer b {position:absolute;right:0;bottom:0;color:var(--dw-muted)}
+body.v4-dark #fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) {--dw-bg:#111d2d;--dw-card:#1b293a;--dw-border:#34445a;--dw-blue:#a6caff;--dw-ink:#e4ecf7;--dw-title:#e4ecf7;--dw-muted:#b1bed1;--dw-soft:#24384f}
+body.v4-dark #fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-btn.primary {background:#28568e;border-color:#487bb9;color:#fff}
+body.v4-dark #fusionLayer.doc-detail .v5-badge.good {background:#28463d;color:#a0d9be}
+
+/* Confirmation form: keep original dimensions, fonts, controls and handlers. */
+#fusionLayer.doc-handle .v5-confirm-title,#fusionLayer.doc-handle .v5-card h2,#fusionLayer.doc-handle .v5-card h3 {color:var(--dw-title)}
+#fusionLayer.doc-handle .v5-caption,#fusionLayer.doc-handle .v5-fields dt {color:var(--dw-muted)}
+#fusionLayer.doc-handle .v5-card p,#fusionLayer.doc-handle .v5-fields dd,#fusionLayer.doc-handle .v5-field>span {color:var(--dw-ink)}
+#fusionLayer.doc-handle .v5-fields>div {border-color:var(--dw-border)}
+#fusionLayer.doc-handle .v5-field em {color:#d94b42}
+#fusionLayer.doc-handle .v5-field input,#fusionLayer.doc-handle .v5-field select,#fusionLayer.doc-handle .v5-field textarea {background:var(--dw-card);border-color:#cddcf3;border-radius:12px;color:var(--dw-ink)}
+#fusionLayer.doc-handle .v5-field textarea::placeholder {color:var(--dw-muted);opacity:1}
+#fusionLayer.doc-handle .v5-field input:focus,#fusionLayer.doc-handle .v5-field select:focus,#fusionLayer.doc-handle .v5-field textarea:focus {outline:2px solid #1765e833;outline-offset:1px;border-color:var(--dw-blue)}
+#fusionLayer.doc-handle .v5-notice {background:var(--dw-soft);border-color:var(--dw-border);color:var(--dw-muted)}
+body.v4-dark #fusionLayer.doc-handle .v5-field input,body.v4-dark #fusionLayer.doc-handle .v5-field select,body.v4-dark #fusionLayer.doc-handle .v5-field textarea {border-color:#526b8b;color-scheme:dark}
+
+/* Receipt: preserve geometry, typography and the original success icon. */
+#fusionLayer.doc-receipt {--dr-bg:#f6f8fc;--dr-card:#fff;--dr-line:#e7edf6;--dr-ink:#202638;--dr-title:#142039;--dr-muted:#687a98;--dr-blue:#1765e8;--dr-soft:#eaf2ff;background:var(--dr-bg);color:var(--dr-ink)}
+#fusionLayer.doc-receipt .fusion-layer-head {background:var(--dr-card);border-color:var(--dr-line);box-shadow:none}
+#fusionLayer.doc-receipt .fusion-layer-head h2,#fusionLayer.doc-receipt .v5-receipt h1,#fusionLayer.doc-receipt .v5-card h2 {color:var(--dr-title)}
+#fusionLayer.doc-receipt .fusion-layer-head>button {color:var(--dr-title)}
+#fusionLayer.doc-receipt .fusion-layer-body,#fusionLayer.doc-receipt .v5-actions {background:var(--dr-bg)}
+#fusionLayer.doc-receipt .v5-context,#fusionLayer.doc-receipt .v5-receipt p,#fusionLayer.doc-receipt .v5-fields dt {color:var(--dr-muted)}
+#fusionLayer.doc-receipt .v5-card {background:var(--dr-card);border-color:var(--dr-line);border-radius:18px;box-shadow:0 3px 12px #204e9608}
+#fusionLayer.doc-receipt .v5-fields>div,#fusionLayer.doc-receipt .v5-actions {border-color:var(--dr-line)}
+#fusionLayer.doc-receipt .v5-fields dd {color:var(--dr-ink)}
+#fusionLayer.doc-receipt .v5-notice {background:var(--dr-soft);border-color:var(--dr-line);color:var(--dr-muted)}
+#fusionLayer.doc-receipt .v5-btn {background:var(--dr-card);border-color:#b5cdf9;border-radius:12px;color:var(--dr-blue)}
+#fusionLayer.doc-receipt .v5-btn.primary {background:var(--dr-blue);border-color:var(--dr-blue);color:#fff}
+body.v4-dark #fusionLayer.doc-receipt {--dr-bg:#111d2d;--dr-card:#1b293a;--dr-line:#34445a;--dr-ink:#e4ecf7;--dr-title:#e4ecf7;--dr-muted:#b1bed1;--dr-blue:#a6caff;--dr-soft:#24384f}
+body.v4-dark #fusionLayer.doc-receipt .v5-btn.primary {background:#28568e;border-color:#487bb9;color:#fff}
+
+/* Reading content stays intact; reuse the workflow palette without font or size changes. */
+#fusionLayer.doc-reader .v5-reading {background:var(--dw-card);border-color:var(--dw-border);border-radius:18px;box-shadow:0 3px 12px #204e9608;color:var(--dw-ink)}
+#fusionLayer.doc-reader .v5-reading h1,#fusionLayer.doc-reader .v5-reading h2 {color:var(--dw-title);border-color:var(--dw-border)}
+#fusionLayer.doc-reader .v5-caption,#fusionLayer.doc-reader .v5-fields dt,#fusionLayer.doc-reader .v5-source {color:var(--dw-muted)}
+#fusionLayer.doc-reader .v5-fields dd {color:var(--dw-ink)}
+#fusionLayer.doc-reader .v5-fields>div,#fusionLayer.doc-reader .v5-source,#fusionLayer.doc-reader .v5-matrix th,#fusionLayer.doc-reader .v5-matrix td {border-color:var(--dw-border)}
+#fusionLayer.doc-reader .v5-matrix th {background:var(--dw-soft);color:var(--dw-title)}
+#fusionLayer.doc-reader .v5-source a {color:var(--dw-blue);text-decoration:underline;text-underline-offset:2px}
+#fusionLayer.doc-reader .v5-source a:focus-visible {outline:2px solid var(--dw-blue);outline-offset:2px;border-radius:2px}
+
+/* My-process list: original typography, layout, counts and controls are retained. */
+#fusionLayer.my-process-list .v5-list-caption,
+#fusionLayer.my-process-list .v5-row-footer,
+#fusionLayer.my-process-list .v5-row-top time,
+#fusionLayer.my-process-list .v5-pager span {color:var(--dw-muted)}
+#fusionLayer.my-process-list .v5-row strong {color:var(--dw-title)}
+#fusionLayer.my-process-list .v5-tabs {background:transparent;border-color:var(--dw-border)}
+#fusionLayer.my-process-list .v5-tabs button {color:var(--dw-muted)}
+#fusionLayer.my-process-list .v5-tabs button.on {color:var(--dw-blue);border-bottom-color:var(--dw-blue)}
+#fusionLayer.my-process-list .v5-tabs em {color:inherit}
+#fusionLayer.my-process-list .v5-search input {background:var(--dw-card);color:var(--dw-ink);border-color:var(--dw-border);border-radius:12px}
+#fusionLayer.my-process-list .v5-search input::placeholder {color:var(--dw-muted);opacity:1}
+#fusionLayer.my-process-list .v5-search button {background:var(--dw-blue);color:#fff;border-color:var(--dw-blue);border-radius:12px}
+#fusionLayer.my-process-list .v5-chips button {background:transparent;color:var(--dw-muted);border-color:transparent;border-radius:99px}
+#fusionLayer.my-process-list .v5-chips button.on {background:var(--dw-card);color:var(--dw-blue);border-color:var(--dw-border);box-shadow:0 2px 6px #204e960a}
+#fusionLayer.my-process-list .v5-badge {background:var(--dw-soft);color:var(--dw-blue);border-radius:99px}
+#fusionLayer.my-process-list .v5-badge.muted {background:#f0f3f8;color:var(--dw-muted)}
+#fusionLayer.my-process-list .v5-badge.good {background:#eaf5ef;color:#287251}
+#fusionLayer.my-process-list .v5-badge.warn {background:#fff1e8;color:#ad6940}
+#fusionLayer.my-process-list .v5-pager button {background:var(--dw-card);color:var(--dw-blue);border-color:#b5cdf9;border-radius:12px}
+#fusionLayer.my-process-list .v5-pager button:disabled {color:var(--dw-muted);border-color:var(--dw-border)}
+#fusionLayer.my-process-list .v5-empty {background:var(--dw-card);color:var(--dw-muted);border-color:var(--dw-border);border-radius:18px}
+#fusionLayer.my-process-list .v5-empty b {color:var(--dw-title)}
+#fusionLayer.my-process-list :is(button,input):focus-visible {outline:2px solid var(--dw-blue);outline-offset:2px}
+body.v4-dark #fusionLayer.my-process-list .v5-search button {background:#28568e;border-color:#487bb9;color:#fff}
+body.v4-dark #fusionLayer.my-process-list .v5-badge.muted {background:#344356;color:#b7c5d7}
+body.v4-dark #fusionLayer.my-process-list .v5-badge.good {background:#28463d;color:#a0d9be}
+body.v4-dark #fusionLayer.my-process-list .v5-badge.warn {background:#513d30;color:#f3caa7}
