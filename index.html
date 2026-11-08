@@ -5,7 +5,7 @@
 <title>XXX局移动办公</title>
 
 
-<link rel="stylesheet" href="assets/v2-bundle.css?v=20261108a">
+<link rel="stylesheet" href="assets/v2-bundle.css?v=20261108d">
 <script src="assets/document-processing/banner-motion.js"></script>
 
 
@@ -4184,6 +4184,7 @@ function v6OpenHistory(){openAssistant('welcome');if(v6RecentQueries().length)op
 const v4CloseFusionLayerBase=closeFusionLayer;
 closeFusionLayer=function(){document.getElementById('fusionLayer').classList.remove('document-processing','leave-application','doc-detail','doc-detail-v2','doc-action','doc-handle','doc-receipt','doc-reader','my-process-list','ui-v2','ui-v2-ice','ui-v2-focus','ui-v2-list','ui-v2-form','ui-v2-assets','ui-v2-contacts','ui-v2-dashboard','ui-v2-metric','ui-v2-review');v4ReadState.processTimers.forEach(clearTimeout);v4ReadState.processTimers=[];v4StopRecordingTimers();v4CloseFusionLayerBase()};
 
+try{(function(){var k='v6HeaderShineDay',d=new Date().toDateString();if(localStorage.getItem(k)===d){document.body.classList.add('v6-shine-off')}else{localStorage.setItem(k,d)}})()}catch(e){}
 v5Initialize();applyV4DisplayMode();renderHome();renderApps();renderMine();updateNav();go('home');v5ApplySession();
 </script>
 </body></html>

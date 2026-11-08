@@ -339,3 +339,14 @@ body.v4-dark #fusionLayer .assistant-shell .v5-search input {background:var(--u2
 #fusionLayer .v5-source-reader .v5-notice .v5-source-original {margin:9px 0 0;padding:9px 0 0;border-top:1px solid rgba(21,82,163,.16);min-height:36px;font-size:13px}
 body.v4-dark #fusionLayer .v5-source-reader .v5-title .source-ai-btn {background:#8eb9ea;color:#10222f}
 body.v4-dark #fusionLayer .v5-source-reader .v5-notice .v5-source-original {border-top-color:rgba(184,213,240,.25)}
+
+/* 2026-11-08 round 19 DEMO (local only): one-shot shine sweep across the home avatar.
+   Single-point trial for the user; remove or adopt after review. */
+.v6-header{position:relative;overflow:hidden}
+.v6-header::after{content:"";position:absolute;inset:-30% -20%;pointer-events:none;background:linear-gradient(110deg,transparent 34%,rgba(255,255,255,.95) 48%,rgba(255,255,255,.65) 52%,transparent 66%);transform:translateX(-135%) skewX(-12deg);animation:v6HeaderShine 1.8s cubic-bezier(.45,.15,.25,1) .7s 1 both}
+@keyframes v6HeaderShine{to{transform:translateX(135%) skewX(-12deg)}}
+body.v4-dark .v6-header::after{background:linear-gradient(110deg,transparent 34%,rgba(190,220,250,.6) 48%,rgba(190,220,250,.4) 52%,transparent 66%)}
+@media(prefers-reduced-motion:reduce){.v6-header::after{animation:none;content:none}}
+
+/* Shine plays once per day: body class set by a storage check in index.html. */
+body.v6-shine-off .v6-header::after{animation:none;content:none}
