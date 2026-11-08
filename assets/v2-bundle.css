@@ -1,0 +1,988 @@
+/* ===== source: assets/document-processing/page.css ===== */
+/* Shared reference-led skin for the four home business lists. */
+#fusionLayer.document-processing {
+  --dp-blue:#1765e8; --dp-title:#101b35; --dp-ink:#171b28;
+  --dp-muted:#68728a; --dp-bg:#f6f8fd; --dp-card:#fff;
+  --dp-soft:#edf3ff; --dp-tag:#e2ecff; --dp-line:#e9edf5;
+  background:var(--dp-bg); isolation:isolate;
+}
+#fusionLayer.document-processing::before {
+  content:""; position:absolute; z-index:-1; inset:-8px -8px auto; height:250px;
+  background:linear-gradient(180deg,#71bcff99,#acd3ff99 45%,var(--dp-bg) 90%),url('civic-center.png') center -82px/100% auto no-repeat;
+  filter:blur(3px); pointer-events:none;
+}
+#fusionLayer.document-processing:has([data-v5-domain="notices"])::before {
+  background:linear-gradient(180deg,#4385be66,#acd3ff88 45%,var(--dp-bg) 90%),url('notices-board.png') center -85px/100% auto no-repeat;
+  filter:blur(2px);
+}
+#fusionLayer.document-processing:has([data-v5-domain="internal"])::before {
+  background:linear-gradient(180deg,#4385be88,#acd3ff88 45%,var(--dp-bg) 90%),url('internal-files.png') center top/100% auto no-repeat;
+  filter:blur(2px);
+}
+#fusionLayer.document-processing::after {
+  content:""; position:absolute; bottom:max(8px,env(safe-area-inset-bottom)); left:30.5%; width:39%; height:5px;
+  border-radius:99px; background:#77798c; pointer-events:none; z-index:4;
+}
+#fusionLayer.document-processing .fusion-layer-head {
+  position:absolute; top:calc(44px + env(safe-area-inset-top)); left:12px; z-index:3; padding:0; min-height:44px;
+  background:transparent; border:0; box-shadow:none; backdrop-filter:none;
+}
+#fusionLayer.document-processing .fusion-layer-head>h2,
+#fusionLayer.document-processing .fusion-layer-head>span {display:none}
+#fusionLayer.document-processing .fusion-layer-head>button {
+  width:44px; height:44px; padding:7px; justify-content:center; color:#fff; border-radius:14px;
+  background:#65819b99;
+}
+#fusionLayer.document-processing .fusion-layer-head>button svg {width:22px;height:22px}
+#fusionLayer.document-processing .fusion-layer-body {
+  padding:calc(93px + env(safe-area-inset-top)) 11px max(36px,calc(20px + env(safe-area-inset-bottom))); background:transparent; overscroll-behavior:contain; scroll-padding:100px 0 24px;
+}
+#fusionLayer.document-processing .v5-page {color:var(--dp-ink);font-size:16px}
+.document-processing .dp-status {
+  position:absolute; top:env(safe-area-inset-top); left:0; right:0; height:43px; padding:11px 21px 0 32px;
+  display:flex;align-items:flex-start;justify-content:space-between;color:#fff;pointer-events:none;
+  font-size:16px; font-weight:650; letter-spacing:.4px;
+}
+.document-processing .dp-status svg {width:69px;height:19px;margin-top:1px}
+.document-processing .dp-banner {
+  position:relative; overflow:hidden; padding:11px 10px 9px; border-radius:24px;
+  background:var(--dp-card); box-shadow:0 7px 24px #6f9fc408;
+}
+.document-processing .dp-banner::before {
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 100% 10%,#cce2ff99,transparent 65%);
+}
+.document-processing .dp-banner::after {
+  content:"";position:absolute;right:-24px;top:41px;width:195px;height:57px;
+  transform:rotate(-18deg);border-radius:70% 0 0 0;background:#e8f2ff88;pointer-events:none;
+}
+.document-processing .dp-banner-copy {position:relative;z-index:1;padding:0 8px}
+.document-processing .dp-banner h1 {margin:0;color:var(--dp-title);font-size:24px;font-weight:700;line-height:28px;letter-spacing:.3px}
+.document-processing .dp-banner h1>span {font-size:28px;font-weight:400;margin-left:3px;line-height:1}
+.document-processing .dp-banner p {margin:2px 0 0;color:#606779;font-size:14px;line-height:20px;letter-spacing:.3px}
+.document-processing .dp-bird {position:absolute;right:102px;top:15px;width:72px;height:40px;z-index:1;pointer-events:none}
+.document-processing .dp-modes {
+  display:flex;position:relative;z-index:1;margin-top:10px;min-height:44px;border-radius:14px;background:var(--dp-soft);padding:0 8px;
+}
+.document-processing .dp-modes button {
+  position:relative;border:0;background:transparent;padding:7px 11px 9px;min-height:44px;font:inherit;font-size:15px;color:#62697a;cursor:pointer;
+}
+.document-processing .dp-modes button+button {margin-left:17px}
+.document-processing .dp-modes button+button::before {content:"";position:absolute;left:-8px;top:15px;width:1px;height:13px;background:#a8b0c2}
+.document-processing .dp-modes button.on {font-weight:700;color:var(--dp-blue)}
+.document-processing .dp-modes button.on::after {content:"";position:absolute;bottom:4px;left:10px;right:10px;height:3px;border-radius:3px;background:var(--dp-blue)}
+.document-processing .dp-modes[data-count="3"] {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0 4px}
+.document-processing .dp-modes[data-count="3"] button {min-width:0;margin-left:0;padding-left:4px;padding-right:4px;overflow-wrap:anywhere}
+.document-processing .dp-modes[data-count="3"] button+button::before {left:0}
+.document-processing [data-v5-domain="notices"] .dp-banner-copy>p:last-child {margin-top:6px;text-wrap:balance}
+.document-processing [data-v5-domain="notices"] .dp-bird {right:24px;top:14px}
+.document-processing .dp-filters {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;gap:1px;margin:8px 0 14px;min-height:44px}
+.document-processing .dp-filters button {min-width:0;position:relative;min-height:44px;padding:6px 4px;border:0;border-radius:99px;background:transparent;color:#626879;font:inherit;font-size:14px;white-space:nowrap;cursor:pointer}
+.document-processing .dp-filters[data-count="4"] {grid-template-columns:repeat(4,minmax(0,1fr))}
+.document-processing .dp-filters[data-count="3"] {grid-template-columns:repeat(3,minmax(0,1fr))}
+.document-processing .dp-filters button.on {color:var(--dp-blue);background:var(--dp-card);font-weight:650;box-shadow:0 2px 5px #266ceb16,0 0 0 1px #e9f1ff}
+.document-processing .dp-filters button:not(.on)+button:not(.on)::before {content:"";position:absolute;left:-2px;top:17px;height:11px;width:1px;background:#b9c0ce}
+.document-processing .dp-search {display:flex;gap:9px;align-items:center;padding:5px 8px;border-radius:20px;background:var(--dp-card);margin:0 0 15px}
+.document-processing .dp-search-field {display:flex;align-items:center;gap:9px;flex:1;min-width:0;padding:0 10px;border-radius:14px;background:#f3f5fa}
+.document-processing .dp-search-field svg {width:20px;height:20px;flex:none;color:#656d80}
+.document-processing .dp-search input {width:100%;min-width:0;min-height:44px;border:0;outline:0;background:transparent;color:var(--dp-ink);font:inherit;font-size:16px}
+.document-processing .dp-search input::placeholder {color:#666d80;font-size:14px;opacity:1}
+.document-processing .dp-search>button {flex:none;min-height:44px;padding:0 16px;border:0;border-radius:12px;background:linear-gradient(155deg,#1268f7,#0757e9);color:#fff;font:inherit;font-size:16px;cursor:pointer}
+.document-processing .dp-list {padding:0 14px;border-radius:24px;background:var(--dp-card)}
+.document-processing .dp-row {display:block;width:100%;position:relative;text-align:left;padding:13px 0 15px;background:transparent;border:0;border-bottom:1px solid var(--dp-line);color:var(--dp-ink);font:inherit;cursor:pointer}
+.document-processing .dp-row:last-child {border-bottom:0}
+.document-processing [data-v5-domain="projects"] .dp-list {display:flex;flex-direction:column;gap:9px;padding:0;background:transparent;border-radius:0}
+.document-processing [data-v5-domain="projects"] .dp-row {padding:14px;border:1px solid var(--dp-line);border-radius:14px;background:var(--dp-card)}
+.document-processing [data-v5-domain="projects"] .dp-row-arrow {right:10px}
+.document-processing [data-v5-domain="projects"] .dp-empty {border-radius:14px;background:var(--dp-card)}
+.document-processing .dp-row-meta {display:flex;align-items:center;gap:8px;min-height:23px;font-size:13px;color:var(--dp-muted)}
+.document-processing .dp-type {background:var(--dp-tag);color:var(--dp-blue);padding:1px 10px;border-radius:99px;font-weight:600;line-height:21px;white-space:nowrap}
+.document-processing .dp-stage {min-width:0;border-left:1px solid #8d96a6;padding-left:10px;line-height:14px}
+.document-processing .dp-row-meta time {margin-left:auto;font-size:12px;white-space:nowrap;color:#68728a;font-variant-numeric:tabular-nums}
+.document-processing .dp-row strong {display:block;font-size:16px;font-weight:650;line-height:1.55;margin:7px 14px 3px 0;overflow-wrap:anywhere}
+.document-processing .dp-row-footer {display:block;padding-right:14px;font-size:13px;line-height:21px;color:#68728a;overflow-wrap:anywhere}
+.document-processing .dp-progress {display:block;height:4px;margin:9px 14px 8px 0;border-radius:99px;background:var(--dp-soft);overflow:hidden}
+.document-processing .dp-progress i {display:block;height:100%;border-radius:inherit;background:var(--dp-blue)}
+.document-processing .dp-row-arrow {position:absolute;right:-4px;top:55%;color:#68728a}
+.document-processing .dp-row-arrow svg {display:block;width:17px;height:17px;transform:rotate(180deg)}
+.document-processing .dp-pager {display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 3px;font-size:12px;color:var(--dp-muted)}
+.document-processing .dp-pager button {min-height:44px;border:1px solid var(--dp-line);border-radius:12px;padding:8px 12px;background:var(--dp-card);color:var(--dp-blue);font:inherit;cursor:pointer}
+.document-processing .dp-pager button:disabled {opacity:.45;cursor:default}
+.document-processing .dp-empty {padding:36px 8px;text-align:center;color:var(--dp-muted)}
+.document-processing .dp-empty>svg {width:28px;height:28px;margin-bottom:8px}
+.document-processing .dp-empty strong {display:block;font-size:16px;font-weight:600}
+.document-processing .dp-empty p {margin-top:6px;font-size:13px}
+.document-processing button:focus-visible,.document-processing .dp-search-field:focus-within {outline:2px solid var(--dp-blue);outline-offset:2px}
+#fusionLayer.document-processing .dp-search input:focus-visible {outline:0}
+.document-processing button:active:not(:disabled) {filter:brightness(.97)}
+body:has(#fusionLayer.document-processing.show) .phone {width:390px;max-width:100vw}
+@media(max-width:499px){body:has(#fusionLayer.document-processing.show) .phone{width:100vw}}
+@media(max-width:375px){.document-processing .dp-search{gap:7px}.document-processing .dp-search-field{gap:6px;padding:0 8px}}
+body.v4-dark #fusionLayer.document-processing {--dp-bg:#111d2d;--dp-card:#1b293a;--dp-title:#e4ecf7;--dp-ink:#e4ecf7;--dp-muted:#b1bed1;--dp-blue:#a6caff;--dp-soft:#24384f;--dp-tag:#294565;--dp-line:#34445a}
+body.v4-dark #fusionLayer.document-processing::before {opacity:.45}
+body.v4-dark #fusionLayer.document-processing .fusion-layer-body {background:transparent}
+body.v4-dark .document-processing .dp-banner::before,body.v4-dark .document-processing .dp-banner::after {opacity:.12}
+body.v4-dark .document-processing .dp-banner p,body.v4-dark .document-processing .dp-modes button:not(.on),body.v4-dark .document-processing .dp-filters button:not(.on),body.v4-dark .document-processing .dp-row-footer,body.v4-dark .document-processing .dp-row-meta time {color:var(--dp-muted)}
+body.v4-dark .document-processing .dp-search-field {background:#243346}
+body.v4-dark .document-processing .dp-search input::placeholder {color:#b1bed1}
+body.v4-dark .document-processing .dp-search-field svg {color:#b1bed1}
+body.bigfont .document-processing .dp-banner h1 {font-size:28px;line-height:1.5}
+body.bigfont .document-processing .dp-banner p,body.bigfont .document-processing .dp-row-footer,body.bigfont .document-processing .dp-row-meta,body.bigfont .document-processing .dp-row-meta time,body.bigfont .document-processing .dp-filters button {font-size:16px;line-height:1.6}
+body.bigfont .document-processing .dp-row strong,body.bigfont .document-processing .dp-search input {font-size:18px}
+body.bigfont .document-processing .dp-modes button {font-size:17px}
+body.bigfont .document-processing .dp-filters {grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+body.bigfont .document-processing .dp-filters[data-count="4"],body.bigfont .document-processing .dp-filters[data-count="3"] {grid-template-columns:repeat(2,minmax(0,1fr))}
+body.bigfont .document-processing .dp-filters button::before {display:none}
+body.bigfont .document-processing .dp-row-meta {flex-wrap:wrap}
+body.bigfont .document-processing .dp-bird {right:24px;opacity:.45}
+
+/* Internal home list surface override: no DOM, typography or layout changes. */
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) {--dp-bg:#f7fafe;--dp-blue:#1552a3;--dp-title:#172334;--dp-ink:#172334;--dp-muted:#63718a;--dp-soft:#e5f1fd;--dp-tag:#e5f1fd;--dp-line:#e4ebf4;--is-surface:#fff;--is-stroke:rgba(220,231,244,.65);--is-shadow:0 5px 18px rgba(42,80,135,.055);background:var(--dp-bg)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"])::before {background:radial-gradient(ellipse at 42% 0%,#deeffc 0%,#edf6fd 45%,transparent 78%);filter:none;animation:none;opacity:1}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-status {color:var(--dp-ink)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .fusion-layer-head>button {color:var(--dp-blue);background:transparent}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-banner {background:var(--is-surface);border-radius:20px;box-shadow:inset 0 0 0 1px var(--is-stroke),var(--is-shadow)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-banner::before, #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-banner::after {background:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .business-banner-decoration {visibility:hidden}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-banner p {color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-modes {background:#f7fbff;border-radius:12px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-modes button:not(.on) {color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-modes button+button::before {background:#c3d2e4}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-filters button {color:var(--dp-muted);border-radius:8px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-filters button.on {background:var(--dp-soft);color:var(--dp-blue);box-shadow:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-filters button::before {background:var(--dp-line)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-search {background:var(--is-surface);border-radius:16px;box-shadow:inset 0 0 0 1px var(--is-stroke),var(--is-shadow)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-search-field {background:var(--is-surface);box-shadow:inset 0 0 0 1px var(--dp-line);border-radius:12px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-search input::placeholder {color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-search-field svg {color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-search>button {background:var(--dp-blue);border-radius:10px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-list {background:transparent;border-radius:18px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-row {isolation:isolate;border-bottom-color:transparent}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-row::before {content:"";position:absolute;inset:4px -8px;z-index:-1;pointer-events:none;background:var(--is-surface);border-radius:18px;box-shadow:inset 0 0 0 1px var(--is-stroke),var(--is-shadow)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-type {border-radius:5px;background:var(--dp-tag);color:var(--dp-blue)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-stage {color:var(--dp-muted);border-color:#c3d2e4}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-row-meta time, #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-row-footer, #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-row-arrow {color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-pager button {background:#ffffff66;border-color:var(--dp-line);border-radius:10px;color:var(--dp-blue)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-empty {background:var(--is-surface);border-radius:18px;box-shadow:inset 0 0 0 1px var(--is-stroke),var(--is-shadow)}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) {--dp-bg:#111d2d;--dp-title:#e4ecf7;--dp-ink:#e4ecf7;--dp-muted:#b1bed1;--dp-blue:#a6caff;--dp-soft:#24384f;--dp-tag:#294565;--dp-line:#34445a;--is-surface:#1b293a;--is-stroke:#34445a;--is-shadow:0 5px 18px #00000012}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"])::before {background:radial-gradient(ellipse at 42% 0%,#20394e,transparent 78%);opacity:1}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-modes {background:#203145}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-search>button {background:#28568e}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"][data-v5-domain="internal"]) .dp-pager button {background:#1b293a66}
+
+/* ===== source: assets/document-processing/banner-motion.css ===== */
+/* Four home lists only; original text geometry and typography remain inherited. */
+#fusionLayer.document-processing:has([data-v5-domain="projects"])::before {
+ background:linear-gradient(180deg,#71bcffbb,#acd3ffbb 45%,var(--dp-bg) 90%),url('project-construction.png') center top/100% auto no-repeat;
+}
+#fusionLayer.document-processing:has([data-v5-domain])::before {filter:blur(3px)}
+#fusionLayer.document-processing::before {animation:bb-light 14s ease-in-out infinite alternate;--bb-light-low:.88;--bb-light-high:1}
+body.v4-dark #fusionLayer.document-processing::before {--bb-light-low:.4;--bb-light-high:.45}
+@keyframes bb-light {from{opacity:var(--bb-light-low)}to{opacity:var(--bb-light-high)}}
+.document-processing .business-banner-decoration {right:20px;top:14px;width:90px;height:48px;pointer-events:none}
+.document-processing .business-banner-decoration>svg,
+.document-processing .business-banner-decoration>img {display:block;width:100%;height:100%;pointer-events:none}
+.document-processing .business-banner-decoration * {pointer-events:none}
+.document-processing .dp-row {transition:transform 220ms ease-out,opacity 220ms ease-out}
+.document-processing .dp-row:active {transform:scale(.99)}
+.document-processing .dp-modes button,.document-processing .dp-filters button {transition:color 220ms ease-out,background-color 220ms ease-out}
+.document-processing .dp-modes button.on::after {animation:bb-underline 240ms ease-out}
+@keyframes bb-underline {from{opacity:.4;transform:scaleX(.9)}to{opacity:1;transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){
+ #fusionLayer.document-processing,#fusionLayer.document-processing::before,
+ .document-processing .business-banner-decoration,.document-processing .business-banner-decoration *,
+ .document-processing .dp-row,.document-processing .dp-modes button,.document-processing .dp-modes button::after,.document-processing .dp-filters button {animation:none!important;transition:none!important}
+ .document-processing .dp-row:active {transform:none}
+}
+
+/* ===== source: assets/leave-application/page.css ===== */
+/* Visual-only skin: the original leave form controls and handlers stay in place. */
+#fusionLayer.leave-application {
+ --la-blue:#1765e8;--la-deep:#184d98;--la-ink:#142039;--la-muted:#687a98;
+ --la-bg:#f5f8ff;--la-card:#fff;--la-border:#e7edf6;--la-input:#cddfff;
+ background:var(--la-bg);color:var(--la-ink);isolation:isolate;
+ font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+}
+#fusionLayer.leave-application::before {content:"";position:absolute;inset:0 0 auto;height:300px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 98% 24%,#5aabff88,transparent 62%),linear-gradient(170deg,#58a7ff,#c3ddff 48%,var(--la-bg) 96%)}
+#fusionLayer.leave-application .fusion-layer-head {position:relative;padding:calc(11px + env(safe-area-inset-top)) 112px 8px 16px;min-height:67px;background:transparent;border:0;gap:8px;color:#fff;backdrop-filter:none;box-shadow:none}
+#fusionLayer.leave-application .fusion-layer-head>button {width:44px;min-width:44px;height:44px;border-radius:13px;background:#497caa66;color:#fff;justify-content:center}
+#fusionLayer.leave-application .fusion-layer-head h2 {font-size:18px;line-height:1.4;text-align:center;overflow:visible;white-space:normal}
+#fusionLayer.leave-application .fusion-layer-head>span {display:none}
+#fusionLayer.leave-application .fusion-layer-body {padding:0 14px max(24px,env(safe-area-inset-bottom));background:transparent;scroll-padding:12px 0 92px}
+#fusionLayer.leave-application .v5-page {color:var(--la-ink);font-size:16px;line-height:1.55}
+.leave-application-status {position:absolute;top:env(safe-area-inset-top);left:0;right:0;height:35px;padding:8px 22px 0 30px;display:flex;justify-content:space-between;color:#fff;font-size:15px;font-weight:600;pointer-events:none}
+.leave-application-status svg {width:68px;height:18px}
+.leave-application-hero {position:relative;min-height:152px;padding:17px 8px 16px;isolation:isolate}
+.leave-application-hero::before {content:"";position:absolute;z-index:-1;bottom:15px;left:-14px;right:-14px;height:40px;border-radius:60% 50% 0 0;background:linear-gradient(10deg,#fff9,#fff0);transform:skewY(-3deg);pointer-events:none}
+.leave-application-heading {padding-right:139px}
+.leave-application-heading h1 {font-size:26px;font-weight:700;line-height:1.4;margin:0 0 4px}
+.leave-application-heading p {margin:0;color:#4e6487;font-size:14px;line-height:23px}
+.leave-application-calendar {position:absolute;right:-4px;top:-7px;width:151px;height:130px;pointer-events:none}
+.leave-application-description {position:relative;margin:17px 0 0;font-size:13px;line-height:1.6;color:#4e6487}
+#fusionLayer.leave-application .v5-card {background:var(--la-card);border:1px solid #ffffffa8;border-radius:22px;padding:17px 18px;margin:0 0 12px;box-shadow:0 8px 28px #204e9612}
+#fusionLayer.leave-application .v5-card h2 {font-size:14px;line-height:26px;font-weight:700;margin:0 0 10px;color:var(--la-ink)}
+#fusionLayer.leave-application .v5-fields>div {grid-template-columns:100px minmax(0,1fr);gap:10px;padding:3px 0;font-size:13px;line-height:23px;border-color:var(--la-border)}
+#fusionLayer.leave-application .v5-fields dt {color:var(--la-muted)}
+#fusionLayer.leave-application .v5-fields dd {color:var(--la-ink);font-weight:400}
+#fusionLayer.leave-application .v5-form-grid {grid-template-columns:minmax(0,1fr);gap:14px}
+#fusionLayer.leave-application .v5-field>span {font-size:13px;line-height:23px;margin-bottom:5px;color:var(--la-ink);font-weight:400}
+#fusionLayer.leave-application .v5-field em {color:#d23d42}
+#fusionLayer.leave-application .v5-field input,#fusionLayer.leave-application .v5-field select,#fusionLayer.leave-application .v5-field textarea {min-height:44px;border:1px solid var(--la-input);border-radius:14px;padding:9px 12px;color:var(--la-ink);background:var(--la-card);font:inherit;font-size:16px;line-height:24px;box-shadow:inset 0 2px 7px #ddecff21}
+#fusionLayer.leave-application .v5-field textarea {min-height:96px;resize:vertical}
+#fusionLayer.leave-application .v5-field textarea::placeholder {color:var(--la-muted)}
+#fusionLayer.leave-application .v5-field select {appearance:none;padding-right:36px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23687a98' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-position:right 12px center;background-repeat:no-repeat}
+#fusionLayer.leave-application .v5-field input:focus,#fusionLayer.leave-application .v5-field select:focus,#fusionLayer.leave-application .v5-field textarea:focus {outline:2px solid #1765e855;outline-offset:1px;border-color:var(--la-blue)}
+#fusionLayer.leave-application .v5-caption {font-size:12px;line-height:21px;color:var(--la-muted)}
+#fusionLayer.leave-application .v5-btn {font-family:inherit;font-size:16px;min-height:48px;border:1px solid var(--la-input);border-radius:14px;background:var(--la-card);color:var(--la-deep);padding:10px 16px}
+#fusionLayer.leave-application button[onclick="v5AddFormAttachment()"] {margin-top:8px;background:#edf4ff;color:var(--la-blue)}
+#fusionLayer.leave-application button[onclick="v5AddFormAttachment()"]::before {content:"";display:inline-block;vertical-align:-3px;width:18px;height:18px;margin-right:5px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231765e8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8 12 7-7a4 4 0 0 1 6 6l-10 10a6 6 0 0 1-8-8L13 3M7 15l9-9a1.5 1.5 0 0 1 2 2l-9 9a2 2 0 0 1-3-3'/%3E%3C/svg%3E") center/contain no-repeat}
+#fusionLayer.leave-application .v5-attachment {border-color:var(--la-border);background:var(--la-card);font-size:14px}
+#fusionLayer.leave-application .v5-attachment small {font-size:12px}
+#fusionLayer.leave-application .v5-actions {position:sticky;bottom:0;gap:12px;margin-top:12px;padding:10px 4px max(12px,env(safe-area-inset-bottom));border-top:0;background:var(--la-bg)}
+#fusionLayer.leave-application .v5-actions .v5-btn:first-child {flex:.85}
+#fusionLayer.leave-application .v5-btn.primary {background:var(--la-blue);border-color:var(--la-blue);color:#fff;box-shadow:0 4px 12px #1765e820}
+#fusionLayer.leave-application .v5-notice {font-size:12px;line-height:1.6;background:#edf4ff;border-color:var(--la-border);color:var(--la-muted)}
+#fusionLayer.leave-application .v5-error {font-size:14px}
+body:has(#fusionLayer.leave-application.show) .phone {width:390px;max-width:100vw}
+@media(max-width:499px){body:has(#fusionLayer.leave-application.show) .phone{width:100vw}}
+body.bigfont #fusionLayer.leave-application .v5-fields>div,body.bigfont #fusionLayer.leave-application .v5-field>span,body.bigfont #fusionLayer.leave-application .v5-field input,body.bigfont #fusionLayer.leave-application .v5-field select,body.bigfont #fusionLayer.leave-application .v5-field textarea,body.bigfont #fusionLayer.leave-application .v5-btn {font-size:18px;line-height:1.6}
+body.bigfont #fusionLayer.leave-application .v5-fields>div {grid-template-columns:110px minmax(0,1fr)}
+body.bigfont #fusionLayer.leave-application .v5-card h2 {font-size:14px}
+body.bigfont .leave-application-heading {padding-right:116px}
+body.bigfont .leave-application-heading h1 {font-size:28px}
+body.bigfont .leave-application-heading p,body.bigfont .leave-application-description {font-size:16px}
+body.bigfont .leave-application-calendar {width:123px}
+body.v4-dark #fusionLayer.leave-application {--la-bg:#111d2d;--la-card:#1b293a;--la-ink:#e4ecf7;--la-muted:#b1bed1;--la-border:#34445a;--la-input:#526b8b;--la-deep:#b5d2fa}
+body.v4-dark #fusionLayer.leave-application::before {opacity:.35}
+body.v4-dark .leave-application-heading p,body.v4-dark .leave-application-description {color:#b1bed1}
+body.v4-dark .leave-application-hero::before {opacity:.1}
+body.v4-dark #fusionLayer.leave-application .v5-card {border-color:var(--la-border)}
+body.v4-dark #fusionLayer.leave-application .v5-notice,body.v4-dark #fusionLayer.leave-application button[onclick="v5AddFormAttachment()"] {background:#24384f;color:#b5d2fa}
+body.v4-dark #fusionLayer.leave-application input[type="date"] {color-scheme:dark}
+
+/* Card typography follows the original prototype; only the two section headings stay bold. */
+#fusionLayer.leave-application .v5-card {font-weight:400}
+#fusionLayer.leave-application #v5Form>.v5-card:last-of-type h2 {font-weight:400}
+#fusionLayer.leave-application .v5-card .v5-btn {font-size:14px;font-weight:400}
+body.bigfont #fusionLayer.leave-application .v5-fields>div,body.bigfont #fusionLayer.leave-application .v5-field>span,body.bigfont #fusionLayer.leave-application .v5-card .v5-btn {font-size:16px;font-weight:400}
+body.bigfont #fusionLayer.leave-application .v5-field input,body.bigfont #fusionLayer.leave-application .v5-field select,body.bigfont #fusionLayer.leave-application .v5-field textarea {font-size:17px;font-weight:400}
+body.bigfont #fusionLayer.leave-application .v5-caption {font-size:13px}
+#fusionLayer.leave-application .v5-actions .v5-btn {font-size:14px;font-weight:400}
+body.bigfont #fusionLayer.leave-application .v5-actions .v5-btn {font-size:16px;font-weight:400}
+
+/* ===== source: assets/doc-workflow/page.css ===== */
+/* Shared home business detail, actions, reading, confirmation and receipts. Typography and business DOM remain inherited. */
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) {
+ --dw-bg:#f6f8fc;--dw-card:#fff;--dw-border:#e7edf6;--dw-blue:#1765e8;
+ --dw-ink:#202638;--dw-title:#142039;--dw-muted:#687a98;--dw-soft:#eaf2ff;
+ background:var(--dw-bg);color:var(--dw-ink);
+}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .fusion-layer-head {background:var(--dw-card);border-bottom:1px solid var(--dw-border);box-shadow:none;backdrop-filter:none}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .fusion-layer-head h2 {color:var(--dw-title)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .fusion-layer-head>button {color:var(--dw-title);background:var(--dw-soft);border-radius:12px;justify-content:center}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .fusion-layer-body {background:var(--dw-bg)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-page {color:var(--dw-ink)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-context {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-detail-heading,
+#fusionLayer.doc-action .v5-title {padding:14px;border:1px solid var(--dw-border);border-radius:18px;background:var(--dw-card);box-shadow:0 3px 12px #204e9608;margin-bottom:12px}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) :is(.v5-detail-heading,.v5-title) h1 {color:var(--dw-title)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) :is(.v5-detail-heading,.v5-title) p {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-badge {background:var(--dw-soft);color:var(--dw-blue);border-radius:99px}
+#fusionLayer.doc-detail .v5-badge.good {background:#eaf5ef;color:#287251}
+#fusionLayer.doc-detail .v5-tabs {border-color:var(--dw-border);background:transparent}
+#fusionLayer.doc-detail .v5-tabs button {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-tabs button.on {color:var(--dw-blue);border-bottom-color:var(--dw-blue)}
+#fusionLayer.doc-detail .v5-tabs em {background:var(--dw-soft);color:var(--dw-blue);border-radius:8px}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) :is(.v5-card,.v5-row) {background:var(--dw-card);border-color:var(--dw-border);border-radius:18px;box-shadow:0 3px 12px #204e9608;color:var(--dw-ink)}
+#fusionLayer.doc-detail .v5-card h2,#fusionLayer.doc-action .v5-row strong {color:var(--dw-title)}
+#fusionLayer.doc-detail .v5-fields>div {border-color:var(--dw-border)}
+#fusionLayer.doc-detail .v5-fields dt {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-fields dd {color:var(--dw-ink)}
+#fusionLayer.doc-detail .v5-card p {color:var(--dw-ink)}
+#fusionLayer.doc-detail .v5-attachment {background:var(--dw-card);border-color:var(--dw-border);color:var(--dw-ink);border-radius:12px}
+#fusionLayer.doc-detail .v5-attachment i {color:var(--dw-blue);background:var(--dw-soft)}
+#fusionLayer.doc-detail .v5-attachment small,#fusionLayer.doc-detail .v5-flow span,#fusionLayer.doc-action .v5-row-footer {color:var(--dw-muted)}
+#fusionLayer.doc-detail .v5-flow li {border-color:var(--dw-border)}
+#fusionLayer.doc-detail .v5-flow li:last-child::before {background:var(--dw-blue)}
+#fusionLayer.doc-detail .v5-notice {background:var(--dw-soft);border-color:var(--dw-border);color:var(--dw-muted)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-actions {background:var(--dw-bg);border-top-color:var(--dw-border)}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-btn {background:var(--dw-card);border-color:#b5cdf9;color:var(--dw-blue);border-radius:12px}
+#fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-btn.primary {background:var(--dw-blue);border-color:var(--dw-blue);color:#fff}
+#fusionLayer.doc-detail .v5-return-link {color:var(--dw-blue)}
+#fusionLayer.doc-action .v5-list {gap:12px}
+#fusionLayer.doc-action .v5-row-footer {padding-right:16px;position:relative}
+#fusionLayer.doc-action .v5-row-footer b {position:absolute;right:0;bottom:0;color:var(--dw-muted)}
+body.v4-dark #fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) {--dw-bg:#111d2d;--dw-card:#1b293a;--dw-border:#34445a;--dw-blue:#a6caff;--dw-ink:#e4ecf7;--dw-title:#e4ecf7;--dw-muted:#b1bed1;--dw-soft:#24384f}
+body.v4-dark #fusionLayer:is(.doc-detail,.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-btn.primary {background:#28568e;border-color:#487bb9;color:#fff}
+body.v4-dark #fusionLayer.doc-detail .v5-badge.good {background:#28463d;color:#a0d9be}
+
+/* Confirmation form: keep original dimensions, fonts, controls and handlers. */
+#fusionLayer.doc-handle .v5-confirm-title,#fusionLayer.doc-handle .v5-card h2,#fusionLayer.doc-handle .v5-card h3 {color:var(--dw-title)}
+#fusionLayer.doc-handle .v5-caption,#fusionLayer.doc-handle .v5-fields dt {color:var(--dw-muted)}
+#fusionLayer.doc-handle .v5-card p,#fusionLayer.doc-handle .v5-fields dd,#fusionLayer.doc-handle .v5-field>span {color:var(--dw-ink)}
+#fusionLayer.doc-handle .v5-fields>div {border-color:var(--dw-border)}
+#fusionLayer.doc-handle .v5-field em {color:#d94b42}
+#fusionLayer.doc-handle .v5-field input,#fusionLayer.doc-handle .v5-field select,#fusionLayer.doc-handle .v5-field textarea {background:var(--dw-card);border-color:#cddcf3;border-radius:12px;color:var(--dw-ink)}
+#fusionLayer.doc-handle .v5-field textarea::placeholder {color:var(--dw-muted);opacity:1}
+#fusionLayer.doc-handle .v5-field input:focus,#fusionLayer.doc-handle .v5-field select:focus,#fusionLayer.doc-handle .v5-field textarea:focus {outline:2px solid #1765e833;outline-offset:1px;border-color:var(--dw-blue)}
+#fusionLayer.doc-handle .v5-notice {background:var(--dw-soft);border-color:var(--dw-border);color:var(--dw-muted)}
+body.v4-dark #fusionLayer.doc-handle .v5-field input,body.v4-dark #fusionLayer.doc-handle .v5-field select,body.v4-dark #fusionLayer.doc-handle .v5-field textarea {border-color:#526b8b;color-scheme:dark}
+
+/* Receipt: preserve geometry, typography and the original success icon. */
+#fusionLayer.doc-receipt {--dr-bg:#f6f8fc;--dr-card:#fff;--dr-line:#e7edf6;--dr-ink:#202638;--dr-title:#142039;--dr-muted:#687a98;--dr-blue:#1765e8;--dr-soft:#eaf2ff;background:var(--dr-bg);color:var(--dr-ink)}
+#fusionLayer.doc-receipt .fusion-layer-head {background:var(--dr-card);border-color:var(--dr-line);box-shadow:none}
+#fusionLayer.doc-receipt .fusion-layer-head h2,#fusionLayer.doc-receipt .v5-receipt h1,#fusionLayer.doc-receipt .v5-card h2 {color:var(--dr-title)}
+#fusionLayer.doc-receipt .fusion-layer-head>button {color:var(--dr-title)}
+#fusionLayer.doc-receipt .fusion-layer-body,#fusionLayer.doc-receipt .v5-actions {background:var(--dr-bg)}
+#fusionLayer.doc-receipt .v5-context,#fusionLayer.doc-receipt .v5-receipt p,#fusionLayer.doc-receipt .v5-fields dt {color:var(--dr-muted)}
+#fusionLayer.doc-receipt .v5-card {background:var(--dr-card);border-color:var(--dr-line);border-radius:18px;box-shadow:0 3px 12px #204e9608}
+#fusionLayer.doc-receipt .v5-fields>div,#fusionLayer.doc-receipt .v5-actions {border-color:var(--dr-line)}
+#fusionLayer.doc-receipt .v5-fields dd {color:var(--dr-ink)}
+#fusionLayer.doc-receipt .v5-notice {background:var(--dr-soft);border-color:var(--dr-line);color:var(--dr-muted)}
+#fusionLayer.doc-receipt .v5-btn {background:var(--dr-card);border-color:#b5cdf9;border-radius:12px;color:var(--dr-blue)}
+#fusionLayer.doc-receipt .v5-btn.primary {background:var(--dr-blue);border-color:var(--dr-blue);color:#fff}
+body.v4-dark #fusionLayer.doc-receipt {--dr-bg:#111d2d;--dr-card:#1b293a;--dr-line:#34445a;--dr-ink:#e4ecf7;--dr-title:#e4ecf7;--dr-muted:#b1bed1;--dr-blue:#a6caff;--dr-soft:#24384f}
+body.v4-dark #fusionLayer.doc-receipt .v5-btn.primary {background:#28568e;border-color:#487bb9;color:#fff}
+
+/* Reading content stays intact; reuse the workflow palette without font or size changes. */
+#fusionLayer.doc-reader .v5-reading {background:var(--dw-card);border-color:var(--dw-border);border-radius:18px;box-shadow:0 3px 12px #204e9608;color:var(--dw-ink)}
+#fusionLayer.doc-reader .v5-reading h1,#fusionLayer.doc-reader .v5-reading h2 {color:var(--dw-title);border-color:var(--dw-border)}
+#fusionLayer.doc-reader .v5-caption,#fusionLayer.doc-reader .v5-fields dt,#fusionLayer.doc-reader .v5-source {color:var(--dw-muted)}
+#fusionLayer.doc-reader .v5-fields dd {color:var(--dw-ink)}
+#fusionLayer.doc-reader .v5-fields>div,#fusionLayer.doc-reader .v5-source,#fusionLayer.doc-reader .v5-matrix th,#fusionLayer.doc-reader .v5-matrix td {border-color:var(--dw-border)}
+#fusionLayer.doc-reader .v5-matrix th {background:var(--dw-soft);color:var(--dw-title)}
+#fusionLayer.doc-reader .v5-source a {color:var(--dw-blue);text-decoration:underline;text-underline-offset:2px}
+#fusionLayer.doc-reader .v5-source a:focus-visible {outline:2px solid var(--dw-blue);outline-offset:2px;border-radius:2px}
+
+/* My-process list: original typography, layout, counts and controls are retained. */
+#fusionLayer.my-process-list .v5-list-caption,
+#fusionLayer.my-process-list .v5-row-footer,
+#fusionLayer.my-process-list .v5-row-top time,
+#fusionLayer.my-process-list .v5-pager span {color:var(--dw-muted)}
+#fusionLayer.my-process-list .v5-row strong {color:var(--dw-title)}
+#fusionLayer.my-process-list .v5-tabs {background:transparent;border-color:var(--dw-border)}
+#fusionLayer.my-process-list .v5-tabs button {color:var(--dw-muted)}
+#fusionLayer.my-process-list .v5-tabs button.on {color:var(--dw-blue);border-bottom-color:var(--dw-blue)}
+#fusionLayer.my-process-list .v5-tabs em {color:inherit}
+#fusionLayer.my-process-list .v5-search input {background:var(--dw-card);color:var(--dw-ink);border-color:var(--dw-border);border-radius:12px}
+#fusionLayer.my-process-list .v5-search input::placeholder {color:var(--dw-muted);opacity:1}
+#fusionLayer.my-process-list .v5-search button {background:var(--dw-blue);color:#fff;border-color:var(--dw-blue);border-radius:12px}
+#fusionLayer.my-process-list .v5-chips button {background:transparent;color:var(--dw-muted);border-color:transparent;border-radius:99px}
+#fusionLayer.my-process-list .v5-chips button.on {background:var(--dw-card);color:var(--dw-blue);border-color:var(--dw-border);box-shadow:0 2px 6px #204e960a}
+#fusionLayer.my-process-list .v5-badge {background:var(--dw-soft);color:var(--dw-blue);border-radius:99px}
+#fusionLayer.my-process-list .v5-badge.muted {background:#f0f3f8;color:var(--dw-muted)}
+#fusionLayer.my-process-list .v5-badge.good {background:#eaf5ef;color:#287251}
+#fusionLayer.my-process-list .v5-badge.warn {background:#fff1e8;color:#ad6940}
+#fusionLayer.my-process-list .v5-pager button {background:var(--dw-card);color:var(--dw-blue);border-color:#b5cdf9;border-radius:12px}
+#fusionLayer.my-process-list .v5-pager button:disabled {color:var(--dw-muted);border-color:var(--dw-border)}
+#fusionLayer.my-process-list .v5-empty {background:var(--dw-card);color:var(--dw-muted);border-color:var(--dw-border);border-radius:18px}
+#fusionLayer.my-process-list .v5-empty b {color:var(--dw-title)}
+#fusionLayer.my-process-list :is(button,input):focus-visible {outline:2px solid var(--dw-blue);outline-offset:2px}
+body.v4-dark #fusionLayer.my-process-list .v5-search button {background:#28568e;border-color:#487bb9;color:#fff}
+body.v4-dark #fusionLayer.my-process-list .v5-badge.muted {background:#344356;color:#b7c5d7}
+body.v4-dark #fusionLayer.my-process-list .v5-badge.good {background:#28463d;color:#a0d9be}
+body.v4-dark #fusionLayer.my-process-list .v5-badge.warn {background:#513d30;color:#f3caa7}
+
+/* ===== source: assets/internal-v2.css ===== */
+/* V2 shared home lists: reference-led layout, original typography and business events. */
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) {--dp-blue:#1552a3;--dp-title:#172334;--dp-ink:#172334;--dp-muted:#63718a;--dp-bg:#f7fafe;--dp-card:#fff;--dp-soft:#e5f1fd;--dp-tag:#e5f1fd;--dp-line:#e4ebf4;background:radial-gradient(ellipse 90% 48% at 50% 4%,rgba(202,229,252,.82),rgba(227,241,253,.42) 58%,transparent 100%),var(--dp-bg)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))::before {background:none;filter:none;animation:none;opacity:0}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))::after {background:#50596a}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .fusion-layer-head {background:transparent;border:0;box-shadow:none;backdrop-filter:none;top:calc(16px + env(safe-area-inset-top));left:12px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .fusion-layer-head>button {color:var(--dp-ink);background:transparent}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .fusion-layer-body {padding:calc(16px + env(safe-area-inset-top)) 12px max(32px,env(safe-area-inset-bottom));scroll-padding:16px 0 32px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-status {color:var(--dp-ink)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner {padding:0;margin:0 0 10px;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner::before, #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner::after {content:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner-copy {padding:0}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner h1 {min-height:44px;display:flex;align-items:center;margin:0 108px 12px 44px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner h1>span {display:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .business-banner-decoration {display:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner p {margin:0 10px 8px;color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner p:first-of-type {display:flex;align-items:center;gap:7px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .internal-context-icon {display:inline-flex;flex:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .internal-context-icon svg {width:16px;height:16px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-banner p:last-child {margin-bottom:0}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes {display:flex;min-height:44px;padding:0 9px;margin:12px 0 0;background:rgba(255,255,255,.64);border-radius:12px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes button {color:var(--dp-muted);padding:7px 9px 9px;min-height:44px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes button.on {color:var(--dp-blue)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes button.on::after {height:2px;bottom:3px;left:9px;right:9px;background:var(--dp-blue)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes button+button {margin-left:15px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes button+button::before {background:#b8c6d9}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-search {padding:0;margin:0 2px 6px;gap:8px;background:transparent;box-shadow:none;border-radius:0}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-search-field {min-height:44px;padding:0 12px;background:#fff;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(225,235,245,.55),0 3px 12px rgba(44,77,120,.025)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-search-field svg, #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-search input::placeholder {color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-search>button {min-height:44px;padding:0 14px;background:var(--dp-blue);border-radius:11px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-filters {display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:thin;margin:0 2px 12px;min-height:44px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-filters button {flex:1 0 auto;padding:7px 10px;min-height:38px;border-radius:9px;color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-filters button.on {background:var(--dp-tag);color:var(--dp-blue);box-shadow:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-filters button::before {display:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-list {display:flex;flex-direction:column;gap:10px;padding:0;background:transparent;border-radius:0}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-row {padding:8px 12px 10px;border:0;border-radius:14px;background:rgba(255,255,255,.96);box-shadow:inset 0 0 0 1px rgba(225,235,245,.55),0 5px 18px rgba(44,77,120,.045),0 1px 3px rgba(44,77,120,.025)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-row::before {content:none}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-row-meta {gap:10px;flex-wrap:wrap}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-type {border-radius:5px;padding:1px 8px;background:var(--dp-tag);color:var(--dp-blue)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-stage {border-color:#aeb9cb;color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-row-meta time {color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-row strong {margin:6px 12px 4px 0}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-row-footer {color:var(--dp-muted);padding-right:16px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-row-arrow {right:10px;top:auto;bottom:14px;color:var(--dp-muted)}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-pager {margin:26px 2px 8px;gap:8px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-pager button {border-color:var(--dp-line);border-radius:11px;background:#ffffff40;color:var(--dp-blue);padding:8px 12px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-empty {background:var(--dp-card);border-radius:14px}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) {--dp-bg:#111d2d;--dp-card:#1b293a;--dp-title:#e4ecf7;--dp-ink:#e4ecf7;--dp-muted:#b1bed1;--dp-blue:#a6caff;--dp-tag:#294565;--dp-line:#34445a;background:radial-gradient(ellipse 90% 48% at 50% 4%,#20394e,transparent),var(--dp-bg)}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-row {background:var(--dp-card);box-shadow:inset 0 0 0 1px var(--dp-line)}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes {background:#203145}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-search-field {background:var(--dp-card);box-shadow:inset 0 0 0 1px var(--dp-line)}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-search>button {background:#28568e}
+body.v4-dark #fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-pager button {background:#1b293a66}
+
+/* Three original notification modes share the same available width. */
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes[data-count="3"] {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0 6px}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes[data-count="3"] button {margin-left:0;min-width:0;padding-left:4px;padding-right:4px;white-space:normal;overflow-wrap:anywhere}
+#fusionLayer.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .dp-modes[data-count="3"] button+button::before {left:0}
+
+/* ===== source: assets/doc-detail-v2.css ===== */
+/* V2 docs detail: same cool-white surface as the unified home lists.
+   Visual layer only; all business DOM, text and typography stay inherited. */
+#fusionLayer.doc-detail-v2 {
+  --dv-blue:#1552a3; --dv-title:#172334; --dv-ink:#172334; --dv-muted:#63718a;
+  --dv-bg:#f7fafe; --dv-card:#ffffff; --dv-soft:#e5f1fd; --dv-line:#e4ebf4;
+  --dv-good:#26755a; --dv-good-bg:#e8f5ef;
+  background:
+    radial-gradient(ellipse 90% 46% at 50% 3%, rgba(202,229,252,.72), rgba(227,241,253,.32) 58%, transparent 100%),
+    var(--dv-bg);
+}
+#fusionLayer.doc-detail-v2 .fusion-layer-head {
+  background:#fff; border-bottom:1px solid var(--dv-line); box-shadow:none; backdrop-filter:none;
+  padding-right:88px;
+}
+#fusionLayer.doc-detail-v2 .fusion-layer-head>button {color:var(--dv-title); background:transparent}
+#fusionLayer.doc-detail-v2 .fusion-layer-head h2 {color:var(--dv-title)}
+#fusionLayer.doc-detail-v2 .fusion-layer-body {
+  background:transparent;
+  padding:calc(13px + env(safe-area-inset-top)) 13px calc(38px + env(safe-area-inset-bottom));
+}
+#fusionLayer.doc-detail-v2 .v5-context {color:var(--dv-muted)}
+#fusionLayer.doc-detail-v2 .v5-detail-heading {
+  padding:12px;
+  border:1px solid rgba(225,235,245,.62); border-radius:16px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 5px 18px rgba(42,80,135,.055), 0 1px 3px rgba(42,80,135,.025);
+}
+#fusionLayer.doc-detail-v2 .v5-badge {
+  font-size:11px; padding:2px 7px;
+  background:var(--dv-soft); color:var(--dv-blue); border-radius:6px;
+  box-shadow:inset 0 0 0 1px rgba(155,195,239,.34);
+}
+#fusionLayer.doc-detail-v2 .v5-badge.good {background:var(--dv-good-bg); color:var(--dv-good)}
+#fusionLayer.doc-detail-v2 .v5-detail-heading h1 {
+  font-size:18px; line-height:1.5; margin:8px 0;
+}
+#fusionLayer.doc-detail-v2 .v5-detail-heading p {margin-bottom:2px}
+#fusionLayer.doc-detail-v2 .v5-tabs {margin-top:9px}
+#fusionLayer.doc-detail-v2 .v5-tabs {
+  margin-top:2px; padding:0 4px; border:0; border-radius:13px; overflow:hidden;
+  background:rgba(255,255,255,.7); box-shadow:inset 0 0 0 1px rgba(225,235,245,.58);
+}
+#fusionLayer.doc-detail-v2 .v5-tabs button {position:relative; color:var(--dv-muted); border-bottom-color:transparent}
+#fusionLayer.doc-detail-v2 .v5-tabs button.on {color:var(--dv-blue); border-bottom-color:transparent}
+#fusionLayer.doc-detail-v2 .v5-tabs button.on::after {
+  content:""; position:absolute; left:50%; bottom:8px; width:18px; height:2px;
+  transform:translateX(-50%); border-radius:2px; background:var(--dv-blue);
+}
+#fusionLayer.doc-detail-v2 .v5-tabs em {background:var(--dv-soft); color:var(--dv-blue); border-radius:5px}
+#fusionLayer.doc-detail-v2 .v5-card {
+  border:1px solid rgba(225,235,245,.58); border-radius:16px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 5px 18px rgba(42,80,135,.055), 0 1px 3px rgba(42,80,135,.025);
+}
+#fusionLayer.doc-detail-v2 .v5-card h2 {color:var(--dv-title)}
+#fusionLayer.doc-detail-v2 .v5-card h3 {color:var(--dv-title)}
+#fusionLayer.doc-detail-v2 .v5-card p {color:var(--dv-ink)}
+#fusionLayer.doc-detail-v2 .v5-fields>div {border-color:#e7edf5}
+#fusionLayer.doc-detail-v2 .v5-fields dt {color:var(--dv-muted)}
+#fusionLayer.doc-detail-v2 .v5-fields dd {color:var(--dv-ink)}
+#fusionLayer.doc-detail-v2 .v5-attachment {
+  border:1px solid rgba(224,235,245,.62); border-radius:12px;
+  background:#fff; color:var(--dv-ink);
+  box-shadow:0 2px 8px rgba(42,80,135,.03);
+}
+#fusionLayer.doc-detail-v2 .v5-attachment i {background:var(--dv-soft); color:var(--dv-blue); border-radius:6px}
+#fusionLayer.doc-detail-v2 .v5-attachment small {color:var(--dv-muted)}
+#fusionLayer.doc-detail-v2 .v5-flow li {border-color:#e7edf5}
+#fusionLayer.doc-detail-v2 .v5-flow b {color:var(--dv-title)}
+#fusionLayer.doc-detail-v2 .v5-flow span {color:var(--dv-muted)}
+#fusionLayer.doc-detail-v2 .v5-flow li:last-child::before {background:var(--dv-blue)}
+#fusionLayer.doc-detail-v2 .v5-notice {
+  background:#f1f7fd; border-color:#e2eaf5; color:#5d6c85; border-radius:13px;
+}
+#fusionLayer.doc-detail-v2 .v5-return-link {color:var(--dv-blue)}
+#fusionLayer.doc-detail-v2 .v5-actions {background:var(--dv-bg); border-top-color:#e6edf5}
+#fusionLayer.doc-detail-v2 .v5-actions .v5-btn {
+  flex:1 1 0; min-width:0;
+}
+#fusionLayer.doc-detail-v2 .v5-actions .v5-btn.primary {flex:1 1 0}
+#fusionLayer.doc-detail-v2 .v5-btn {
+  border-color:#cadef5; border-radius:11px; background:#fff; color:var(--dv-blue);
+}
+#fusionLayer.doc-detail-v2 .v5-btn.primary {
+  background:var(--dv-blue); border-color:var(--dv-blue); color:#fff;
+}
+#fusionLayer.doc-detail-v2 .v5-btn:focus-visible,
+#fusionLayer.doc-detail-v2 .v5-tabs button:focus-visible,
+#fusionLayer.doc-detail-v2 .v5-attachment:focus-visible,
+#fusionLayer.doc-detail-v2 .v5-return-link:focus-visible {outline:2px solid var(--dv-blue); outline-offset:2px}
+body.v4-dark #fusionLayer.doc-detail-v2 {
+  --dv-bg:#111d2d; --dv-card:#1b293a; --dv-title:#e4ecf7; --dv-ink:#e4ecf7;
+  --dv-muted:#b1bed1; --dv-blue:#a6caff; --dv-soft:#24384f; --dv-line:#34445a;
+  --dv-good:#a0d9be; --dv-good-bg:#28463d;
+  background:radial-gradient(ellipse 90% 46% at 50% 3%, #20394e, transparent), var(--dv-bg);
+}
+body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-head {background:var(--dv-card); border-bottom-color:var(--dv-line)}
+body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-body {background:transparent}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-detail-heading,
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-card {background:var(--dv-card); border-color:var(--dv-line); box-shadow:none}
+body.bigfont #fusionLayer.doc-detail-v2 .v5-detail-heading h1 {font-size:20px}
+body.bigfont #fusionLayer.doc-detail-v2 .v5-detail-heading .v5-badge {font-size:13px; padding:3px 8px}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-tabs {background:#203145; box-shadow:inset 0 0 0 1px var(--dv-line)}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-attachment,
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-btn {background:var(--dv-card); border-color:var(--dv-line); box-shadow:none}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-btn.primary {background:#28568e; border-color:#487bb9; color:#fff}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-fields>div,
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-flow li,
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-notice {border-color:var(--dv-line)}
+body.v4-dark #fusionLayer.doc-detail-v2 .v5-notice {background:#203145; color:#b1bed1}
+
+@media (prefers-reduced-motion: reduce) {
+  #fusionLayer.doc-detail-v2 .v5-detail-heading,
+  #fusionLayer.doc-detail-v2 .v5-card,
+  #fusionLayer.doc-detail-v2 .v5-attachment {transition:none}
+}
+
+/* Match the shared list environment chip without changing its warning meaning. */
+
+/* ===== source: assets/business-v2.css ===== */
+/* Stage 1 v2 cool-white surface for workflow actions, confirmations, receipts,
+   reading and the shared my-process list. Visual layer only: variables are remapped
+   on top of assets/doc-workflow/page.css; business DOM, typography and handlers stay inherited. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-reader,.my-process-list) {
+  --dw-bg:#f7fafe; --dw-card:#ffffff; --dw-border:#e4ebf4; --dw-blue:#1552a3;
+  --dw-ink:#172334; --dw-title:#172334; --dw-muted:#63718a; --dw-soft:#e5f1fd;
+}
+#fusionLayer.doc-receipt {
+  --dr-bg:#f7fafe; --dr-card:#ffffff; --dr-line:#e4ebf4; --dr-ink:#172334;
+  --dr-title:#172334; --dr-muted:#63718a; --dr-blue:#1552a3; --dr-soft:#e5f1fd;
+}
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) {
+  background:
+    radial-gradient(ellipse 90% 46% at 50% 3%, rgba(202,229,252,.72), rgba(227,241,253,.32) 58%, transparent 100%),
+    #f7fafe;
+}
+body.v4-dark #fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) {
+  background:radial-gradient(ellipse 90% 46% at 50% 3%, #20394e, transparent), #111d2d;
+}
+
+/* Top-bar back buttons stay transparent on every business surface (user request 11-08). */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) .fusion-layer-head>button,
+#fusionLayer.doc-detail-v2 .fusion-layer-head>button {background:transparent; border-radius:0; justify-content:flex-start}
+
+/* v2 card geometry: 16px radius with the two-layer soft shadow. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) :is(.v5-card,.v5-row,.v5-reading,.v5-empty) {
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(42,80,135,.055), 0 1px 3px rgba(42,80,135,.025);
+}
+#fusionLayer:is(.doc-action,.doc-handle) :is(.v5-detail-heading,.v5-title) {
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(42,80,135,.055), 0 1px 3px rgba(42,80,135,.025);
+}
+body.v4-dark #fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) :is(.v5-card,.v5-row,.v5-reading,.v5-empty),
+body.v4-dark #fusionLayer:is(.doc-action,.doc-handle) :is(.v5-detail-heading,.v5-title) {box-shadow:none}
+
+/* v2 buttons and inputs. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) .v5-btn {
+  border-color:#cadef5; border-radius:11px;
+}
+#fusionLayer.doc-handle .v5-field input,
+#fusionLayer.doc-handle .v5-field select,
+#fusionLayer.doc-handle .v5-field textarea {border-color:#c9ddf3; border-radius:11px}
+#fusionLayer.doc-handle .v5-field input:focus,
+#fusionLayer.doc-handle .v5-field select:focus,
+#fusionLayer.doc-handle .v5-field textarea:focus {outline:2px solid rgba(21,82,163,.28); outline-offset:1px; border-color:var(--dw-blue)}
+
+/* v2 badges: squared-soft chip with the inset hairline. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-badge {
+  border-radius:6px; box-shadow:inset 0 0 0 1px rgba(155,195,239,.34);
+}
+#fusionLayer:is(.doc-action,.doc-handle,.doc-reader,.my-process-list) .v5-badge.good {
+  box-shadow:inset 0 0 0 1px rgba(146,199,175,.38);
+}
+
+/* My-process list: v2 pill tabs with the short underline indicator. */
+#fusionLayer.my-process-list .v5-tabs {
+  border:0; border-radius:13px; padding:0 4px; overflow:hidden;
+  background:rgba(255,255,255,.7); box-shadow:inset 0 0 0 1px rgba(225,235,245,.58);
+}
+#fusionLayer.my-process-list .v5-tabs button {position:relative; border-bottom-color:transparent}
+#fusionLayer.my-process-list .v5-tabs button.on {border-bottom-color:transparent; font-weight:650}
+#fusionLayer.my-process-list .v5-tabs button.on::after {
+  content:""; position:absolute; left:50%; bottom:8px; width:18px; height:2px;
+  transform:translateX(-50%); border-radius:2px; background:var(--dw-blue);
+}
+#fusionLayer.my-process-list .v5-chips button {border-radius:9px}
+#fusionLayer.my-process-list .v5-search input {border-radius:12px}
+#fusionLayer.my-process-list .v5-search button {border-radius:11px}
+#fusionLayer.my-process-list .v5-pager button {border-radius:11px; border-color:var(--dw-border)}
+body.v4-dark #fusionLayer.my-process-list .v5-tabs {background:#203145; box-shadow:inset 0 0 0 1px #34445a}
+
+/* v2 focus ring shared across the five surfaces. */
+#fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) :is(.v5-btn,.v5-row,.v5-search button,.v5-chips button,.v5-tabs button,.v5-pager button,.v5-attachment,.v5-return-link):focus-visible {
+  outline:2px solid var(--dw-blue); outline-offset:2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #fusionLayer:is(.doc-action,.doc-handle,.doc-receipt,.doc-reader,.my-process-list) :is(.v5-card,.v5-row,.v5-reading) {transition:none}
+}
+
+/* ===== source: assets/ui-v2-system.css ===== */
+/* Version-two shared visual system. Business data, fields and handlers stay in index.html. */
+:root {
+  --u2-blue:#1552a3;
+  --u2-blue-strong:#0f4388;
+  --u2-blue-soft:#e5f1fd;
+  --u2-bg:#f7fafe;
+  --u2-bg-ice:#eef6ff;
+  --u2-card:#fff;
+  --u2-ink:#172334;
+  --u2-muted:#63718a;
+  --u2-line:#e4ebf4;
+  --u2-line-blue:#cadef5;
+  --u2-danger:#b64b38;
+  --u2-radius:16px;
+  --u2-shadow:0 5px 18px rgba(42,80,135,.055),0 0 0 1px rgba(225,235,245,.58);
+  --u2-focus:0 0 0 3px rgba(21,82,163,.16);
+}
+
+/* Browse and discovery surfaces use the ice-blue atmosphere. */
+#page-apps,#page-mine {background:var(--u2-bg-ice);color:var(--u2-ink)}
+#page-apps::before,#page-mine::before {
+  content:"";position:absolute;inset:0 0 auto;height:230px;pointer-events:none;
+  background:radial-gradient(circle at 88% 5%,rgba(120,185,245,.32),transparent 47%),linear-gradient(180deg,#e5f2ff 0,#f7fafe 88%);
+}
+#page-apps>* ,#page-mine>* {position:relative}
+
+/* Application shell: no dark hero; the title, search and catalogue share one quiet hierarchy. */
+#page-apps .apps-sticky-shell {background:rgba(238,246,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(202,222,245,.76)}
+#page-apps .apps-v3-head {padding:calc(18px + env(safe-area-inset-top)) 16px 12px;background:transparent;color:var(--u2-ink)}
+#page-apps .apps-title-row h1 {font-size:22px;line-height:1.35;color:var(--u2-ink)}
+#page-apps .apps-title-row p {font-size:12px;line-height:1.5;color:var(--u2-muted);opacity:1}
+#page-apps .apps-search-row {gap:10px;margin-top:12px}
+#page-apps .apps-search {min-height:48px;border:1px solid var(--u2-line-blue);border-radius:15px;background:rgba(255,255,255,.94);box-shadow:0 4px 14px rgba(42,80,135,.05);color:var(--u2-muted)}
+#page-apps .apps-search:focus-within {border-color:var(--u2-blue);box-shadow:var(--u2-focus)}
+#page-apps .apps-search input {font-size:16px;color:var(--u2-ink)}
+#page-apps .apps-search input::placeholder {color:#687a98;opacity:1}
+#page-apps .apps-ai-search {width:48px;height:48px;border:1px solid var(--u2-line-blue);border-radius:15px;background:#fff;color:var(--u2-blue);box-shadow:0 4px 14px rgba(42,80,135,.05)}
+#page-apps .app-catbar {padding:3px 14px 11px;background:transparent;gap:8px}
+#page-apps .app-catbar button {min-height:44px;padding:0 15px;border:1px solid var(--u2-line-blue);border-radius:13px;background:rgba(255,255,255,.72);color:var(--u2-muted);font-size:13px}
+#page-apps .app-catbar button.on {background:#fff;border-color:#9fc4ef;color:var(--u2-blue);box-shadow:inset 0 -2px 0 var(--u2-blue),0 4px 12px rgba(42,80,135,.05)}
+#page-apps .apps-body-v3 {padding:8px 14px 98px;background:transparent}
+#page-apps .apps-side-rail {border:1px solid var(--u2-line);border-radius:15px;background:rgba(255,255,255,.65);padding:5px}
+#page-apps .apps-side-rail button {min-height:48px;border-radius:11px;color:var(--u2-muted)}
+#page-apps .apps-side-rail button.on {background:#fff;color:var(--u2-blue);box-shadow:var(--u2-shadow)}
+#page-apps .app-group-title {margin:4px 3px 10px}
+#page-apps .app-group-title b {color:var(--u2-ink);font-size:15px}
+#page-apps .app-group-title span {color:var(--u2-muted);font-size:11px}
+#page-apps .app-v3,#page-apps .apps-empty {border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#page-apps .app-v3 {min-height:92px;padding:13px 12px}
+#page-apps .app-v3:active {background:#f6faff;transform:translateY(1px)}
+#page-apps .app-v3 i {border-radius:12px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+
+/* Mine shell uses the same browse surface while retaining identity prominence without a dark banner. */
+#page-mine .mine-v4-head {padding:calc(22px + env(safe-area-inset-top)) 16px 18px;background:transparent;color:var(--u2-ink)}
+#page-mine .mine-v4-head::after {right:-75px;top:-100px;background:rgba(84,156,224,.1)}
+#page-mine .mine-v4-avatar {background:#fff;border:1px solid var(--u2-line-blue);color:var(--u2-blue);box-shadow:var(--u2-shadow)}
+#page-mine .mine-v4-profile p,#page-mine .mine-v4-login {color:var(--u2-muted);opacity:1}
+#page-mine .mine-v4-login::before {background:#299866;box-shadow:0 0 0 3px rgba(41,152,102,.12)}
+#page-mine .mine-v4-safe {background:#fff;border:1px solid var(--u2-line-blue);color:var(--u2-blue);box-shadow:var(--u2-shadow)}
+#page-mine .mine-v4-auth span {padding:6px 9px;background:rgba(255,255,255,.86);border:1px solid var(--u2-line-blue);color:var(--u2-blue)}
+#page-mine .mine-v4-body {padding:10px 14px 98px;background:transparent}
+#page-mine .mine-v4-section {margin-bottom:16px}
+#page-mine .mine-v4-section>h2 {margin:0 4px 9px;color:var(--u2-muted);font-size:12px}
+#page-mine .mine-v4-group {border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#page-mine .mine-v4-group button {min-height:60px;padding:10px 13px;background:#fff;border-color:var(--u2-line);color:var(--u2-ink)}
+#page-mine .mine-v4-group button:active {background:#f5f9fe}
+#page-mine .mine-v4-ico {width:38px;height:38px;border-radius:12px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+#page-mine .mine-v4-group b {font-size:14px}
+#page-mine .mine-v4-group span {font-size:11px;color:var(--u2-muted)}
+
+/* Every routed business page receives the shared component vocabulary. */
+#fusionLayer.ui-v2 {--dv-blue:var(--u2-blue);color:var(--u2-ink)}
+#fusionLayer.ui-v2.ui-v2-ice {background:var(--u2-bg-ice)}
+#fusionLayer.ui-v2.ui-v2-ice .fusion-layer-body {background:radial-gradient(circle at 100% 0,rgba(126,188,245,.2),transparent 280px),var(--u2-bg)}
+#fusionLayer.ui-v2.ui-v2-focus,#fusionLayer.ui-v2.ui-v2-focus .fusion-layer-body {background:#fff}
+#fusionLayer.ui-v2 .fusion-layer-head {background:#fff;border-bottom:1px solid var(--u2-line);box-shadow:0 1px 0 rgba(34,60,93,.04)}
+#fusionLayer.ui-v2 .fusion-layer-head>button {width:44px;height:44px;border-radius:12px;background:transparent;color:var(--u2-blue)}
+#fusionLayer.ui-v2 .fusion-layer-head h2 {color:var(--u2-ink)}
+#fusionLayer.ui-v2 .v5-card,#fusionLayer.ui-v2 .v4-card {border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer.ui-v2 .v5-context {color:var(--u2-muted)}
+#fusionLayer.ui-v2 .v5-title h1 {color:var(--u2-ink)}
+#fusionLayer.ui-v2 .v5-title p,#fusionLayer.ui-v2 .v5-caption {color:var(--u2-muted)}
+#fusionLayer.ui-v2 .v5-btn,#fusionLayer.ui-v2 .v5-small-btn {min-height:48px;border:1px solid var(--u2-line-blue);border-radius:12px;background:#fff;color:var(--u2-blue)}
+#fusionLayer.ui-v2 .v5-btn.primary {background:var(--u2-blue);border-color:var(--u2-blue);color:#fff;box-shadow:0 4px 12px rgba(21,82,163,.16)}
+#fusionLayer.ui-v2 button:focus-visible,#page-apps button:focus-visible,#page-mine button:focus-visible,#page-apps input:focus-visible {outline:2px solid var(--u2-blue);outline-offset:2px}
+
+/* Shared list family (2026-11-08): list/browse pages — my-process, home tasks,
+   contacts, assets — speak the same component language as the document-processing
+   list: open borderless chip row, white inset-ring search field, solid blue action.
+   Mode tabs stay pills where a page already pairs them with counters. */
+#fusionLayer.ui-v2-list .v5-search {display:flex;gap:8px;align-items:center;margin:0 2px 10px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+#fusionLayer.ui-v2-list .v5-search input {min-width:0;flex:1;min-height:44px;padding:0 12px;border:0;border-radius:12px;background:#fff;color:var(--u2-ink);font-size:16px;box-shadow:inset 0 0 0 1px rgba(225,235,245,.55),0 3px 12px rgba(44,77,120,.025)}
+#fusionLayer.ui-v2-list .v5-search input::placeholder {color:var(--u2-muted)}
+#fusionLayer.ui-v2-list .v5-search button {flex:none;min-width:64px;min-height:44px;padding:0 14px;border:0;border-radius:11px;background:var(--u2-blue);color:#fff}
+#fusionLayer.ui-v2-list .v5-tabs {padding:5px;border:1px solid var(--u2-line);border-radius:14px;background:rgba(255,255,255,.74)}
+#fusionLayer.ui-v2-list .v5-tabs button {min-height:44px;border-radius:10px;color:var(--u2-muted)}
+#fusionLayer.ui-v2-list .v5-tabs button.on {background:#fff;color:var(--u2-blue);box-shadow:0 2px 9px rgba(42,80,135,.08)}
+#fusionLayer.ui-v2-list .v5-chips {display:flex;gap:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;margin:0 2px 12px;padding:0;border:0;border-radius:0;background:transparent}
+#fusionLayer.ui-v2-list .v5-chips button {flex:0 0 auto;min-height:38px;padding:7px 10px;border:0;border-radius:9px;background:transparent;color:var(--u2-muted);white-space:nowrap;font-size:13px}
+#fusionLayer.ui-v2-list .v5-chips button.on {background:var(--u2-blue-soft);color:var(--u2-blue);font-weight:600;box-shadow:none}
+#fusionLayer.ui-v2-list .v5-pager {margin:16px 2px 8px;gap:8px}
+#fusionLayer.ui-v2-list .v5-pager button {min-height:44px;padding:8px 12px;border:1px solid var(--u2-line);border-radius:11px;background:rgba(255,255,255,.44);color:var(--u2-blue)}
+#fusionLayer.ui-v2-list .v5-pager span {font-size:11px;color:var(--u2-muted)}
+#fusionLayer.ui-v2-list .v5-row {margin-bottom:10px;border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer.ui-v2-list .v5-row:active {background:#f6faff;transform:translateY(1px)}
+#fusionLayer.ui-v2-list .v5-empty {border:1px dashed #abc9ea;border-radius:var(--u2-radius);background:rgba(255,255,255,.72)}
+/* Home full-task list rows join the same card rhythm as the dp rows. */
+#fusionLayer.ui-v2-list .v6-full-task-list {display:flex;flex-direction:column;gap:10px;padding:0;margin:2px 0 4px;border:0;border-radius:0;background:transparent}
+#fusionLayer.ui-v2-list .v6-task-row {padding:10px 12px;border:0;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px rgba(225,235,245,.55),0 5px 18px rgba(44,77,120,.045),0 1px 3px rgba(44,77,120,.025)}
+
+/* Focus pages are deliberately quiet: no decorative ice gradient behind the task. */
+#fusionLayer.ui-v2-form .v5-title {padding-bottom:6px}
+#fusionLayer.ui-v2-form .v5-card {box-shadow:none;border-color:var(--u2-line);margin-bottom:12px}
+#fusionLayer.ui-v2-form .v5-field input,#fusionLayer.ui-v2-form .v5-field select,#fusionLayer.ui-v2-form .v5-field textarea,
+#fusionLayer.ui-v2-review input,#fusionLayer.ui-v2-review select,#fusionLayer.ui-v2-review textarea {min-height:48px;border:1px solid var(--u2-line-blue);border-radius:12px;background:#fff;color:var(--u2-ink);font-size:16px}
+#fusionLayer.ui-v2-form .v5-field textarea,#fusionLayer.ui-v2-review textarea {min-height:104px}
+#fusionLayer.ui-v2-form .v5-field input:focus,#fusionLayer.ui-v2-form .v5-field select:focus,#fusionLayer.ui-v2-form .v5-field textarea:focus,
+#fusionLayer.ui-v2-review input:focus,#fusionLayer.ui-v2-review select:focus,#fusionLayer.ui-v2-review textarea:focus {outline:0;border-color:var(--u2-blue);box-shadow:var(--u2-focus)}
+#fusionLayer.ui-v2-form .v5-actions,#fusionLayer.ui-v2-focus .v5-actions {background:#fff;border-top:1px solid var(--u2-line)}
+
+/* Asset/contact browse families share the list family above; only field dividers differ. */
+#fusionLayer.ui-v2-assets .v5-fields>div,#fusionLayer.ui-v2-contacts .v5-fields>div {border-color:var(--u2-line)}
+
+/* Dashboard and metric families keep visual richness only where it aids scanning. */
+#fusionLayer.ui-v2-dashboard .v5-tabs {padding:5px;border:1px solid var(--u2-line);border-radius:14px;background:rgba(255,255,255,.78)}
+#fusionLayer.ui-v2-dashboard .v5-tabs button {min-height:44px;border-radius:10px;color:var(--u2-muted)}
+#fusionLayer.ui-v2-dashboard .v5-tabs button.on {background:#fff;color:var(--u2-blue);box-shadow:0 2px 9px rgba(42,80,135,.08)}
+#fusionLayer.ui-v2-dashboard .v5-kpi {border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer.ui-v2-dashboard .v5-kpi b {color:var(--u2-blue)}
+#fusionLayer.ui-v2-dashboard .v5-chart-figure,#fusionLayer.ui-v2-metric .v5-chart-figure {border-radius:14px;background:#fff}
+#fusionLayer.ui-v2-dashboard .v5-chart,#fusionLayer.ui-v2-metric .v5-chart {color:var(--u2-blue)}
+#fusionLayer.ui-v2-review .v5-card {box-shadow:none}
+
+body.bigfont #page-apps .app-catbar button,body.bigfont #page-apps .apps-search,
+body.bigfont #page-mine .mine-v4-group button {min-height:52px}
+
+body.v4-dark {
+  --u2-bg:#101923;--u2-bg-ice:#111d29;--u2-card:#182431;--u2-ink:#eef4f9;--u2-muted:#b7c4d1;
+  --u2-line:#2b3a49;--u2-line-blue:#35516d;--u2-blue-soft:#20364b;--u2-blue:#8eb9ea;
+  --u2-shadow:0 5px 18px rgba(0,0,0,.16),0 0 0 1px rgba(60,83,105,.45);
+}
+body.v4-dark #page-apps::before,body.v4-dark #page-mine::before {background:radial-gradient(circle at 88% 5%,rgba(50,94,136,.32),transparent 47%),linear-gradient(180deg,#132638 0,#101923 88%)}
+body.v4-dark #page-apps .apps-sticky-shell {background:rgba(16,25,35,.94);border-color:var(--u2-line)}
+body.v4-dark #page-apps .apps-v3-head,body.v4-dark #page-apps .app-catbar {background:transparent}
+body.v4-dark #page-apps .apps-search,body.v4-dark #page-apps .apps-ai-search,body.v4-dark #page-apps .app-catbar button,
+body.v4-dark #page-apps .apps-side-rail,body.v4-dark #page-apps .app-v3,body.v4-dark #page-mine .mine-v4-avatar,
+body.v4-dark #page-mine .mine-v4-safe,body.v4-dark #page-mine .mine-v4-auth span,body.v4-dark #page-mine .mine-v4-group,
+body.v4-dark #page-mine .mine-v4-group button {background:var(--u2-card);border-color:var(--u2-line);color:var(--u2-ink)}
+body.v4-dark #fusionLayer.ui-v2.ui-v2-ice .fusion-layer-body {background:radial-gradient(circle at 100% 0,rgba(47,93,136,.2),transparent 280px),var(--u2-bg)}
+body.v4-dark #fusionLayer.ui-v2.ui-v2-focus,body.v4-dark #fusionLayer.ui-v2.ui-v2-focus .fusion-layer-body,
+body.v4-dark #fusionLayer.ui-v2 .fusion-layer-head,body.v4-dark #fusionLayer.ui-v2 .v5-card,
+body.v4-dark #fusionLayer.ui-v2 .v4-card,body.v4-dark #fusionLayer.ui-v2-list .v5-row,
+body.v4-dark #fusionLayer.ui-v2-dashboard .v5-kpi {background:var(--u2-card);border-color:var(--u2-line);color:var(--u2-ink)}
+body.v4-dark #fusionLayer.doc-detail-v2 .fusion-layer-head {background:#1b293a}
+
+@media(min-width:700px) and (max-width:850px) {
+  #page-apps .apps-v3-head,#page-mine .mine-v4-head {padding-left:26px;padding-right:26px}
+  #page-apps .apps-body-v3,#page-mine .mine-v4-body {padding-left:24px;padding-right:24px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  #page-apps *,#page-mine *,#fusionLayer.ui-v2 * {scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+
+/* 2026-11-08 correction: keep the approved dark top bars on the two main shells. */
+#page-apps::before,#page-mine::before {display:none}
+#page-apps .apps-sticky-shell {background:#fff;border-bottom:1px solid var(--u2-line);backdrop-filter:none}
+#page-apps .apps-v3-head {background:linear-gradient(135deg,#173e79,#2e63b4 72%,#4f7cbd);color:#fff}
+#page-apps .apps-title-row h1 {color:#fff}
+#page-apps .apps-title-row p {color:rgba(255,255,255,.78)}
+#page-apps .apps-search {background:rgba(255,255,255,.96);border-color:rgba(255,255,255,.35)}
+#page-apps .apps-ai-search {background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.24);color:#fff;box-shadow:none}
+#page-apps .app-catbar {background:#fff}
+#page-mine .mine-v4-head {background:linear-gradient(145deg,#103f78,#1e68ad);color:#fff}
+#page-mine .mine-v4-head::after {display:block;background:rgba(255,255,255,.055)}
+#page-mine .mine-v4-avatar {background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:none}
+#page-mine .mine-v4-profile p,#page-mine .mine-v4-login {color:rgba(255,255,255,.86)}
+#page-mine .mine-v4-safe {background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.15);color:#fff;box-shadow:none}
+#page-mine .mine-v4-auth span {background:rgba(255,255,255,.13);border-color:transparent;color:#fff}
+body.v4-dark #page-apps .apps-sticky-shell {background:var(--u2-card)}
+body.v4-dark #page-apps .apps-v3-head {background:linear-gradient(135deg,#173e79,#2e63b4 72%,#4f7cbd)}
+body.v4-dark #page-apps .apps-search input::placeholder {color:#91a6bd}
+body.v4-dark #page-apps .apps-ai-search {background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.24);color:#fff}
+body.v4-dark #page-mine .mine-v4-head {background:linear-gradient(145deg,#103f78,#1e68ad)}
+
+/* Supplies lists join the shared home-list family via internal-v2.css scope. */
+
+/* 2026-11-08 unified top bar: every standard business page head uses the app-shell
+   blue gradient with white text; the back button stays transparent. The floating
+   heads of the four home list domains (transparent, no bar) are excluded. */
+#fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head {
+  background:linear-gradient(135deg,#173e79,#2e63b4 72%,#4f7cbd)!important;
+  border-bottom:0!important;box-shadow:none!important;backdrop-filter:none!important;
+}
+#fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head h2 {color:#fff!important}
+#fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head span {color:rgba(255,255,255,.82)!important}
+#fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head>button {background:transparent!important;border-radius:0;color:#fff!important}
+body.v4-dark #fusionLayer:not(:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"]))) .fusion-layer-head {
+  background:linear-gradient(135deg,#173e79,#2e63b4 72%,#4f7cbd)!important;
+}
+
+/* 2026-11-08 round 4: banners must not merge into the page background. Title
+   banners become white cards; tab/chip selectors get a white pill bar on form
+   and AI-review pages. The four home-list floating heads lose their white bar. */
+#fusionLayer.ui-v2 .v5-title {margin:2px 2px 12px;padding:13px 16px;border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer.ui-v2 .v5-title small {color:var(--u2-muted)}
+body.v4-dark #fusionLayer.ui-v2 .v5-title {background:var(--u2-card);border-color:var(--u2-line)}
+#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-tabs,#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-chips {display:flex;gap:0;align-items:center;padding:5px;margin:2px 2px 12px;border:1px solid var(--u2-line);border-radius:14px;background:rgba(255,255,255,.9)}
+#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-tabs button {flex:1 1 0;min-height:44px;border:0;border-bottom:0;border-radius:10px;background:transparent;color:var(--u2-muted)}
+#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-tabs button.on,#fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-chips button.on {background:var(--u2-blue-soft);color:var(--u2-blue);border-bottom:0;box-shadow:none}
+body.v4-dark #fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-tabs,body.v4-dark #fusionLayer.ui-v2:is(.ui-v2-form,.ui-v2-review) .v5-chips {background:rgba(27,41,58,.9);border-color:var(--u2-line)}
+#fusionLayer.ui-v2.document-processing:has(.v5-page[data-v5-view="list"]:is([data-v5-domain="internal"],[data-v5-domain="docs"],[data-v5-domain="projects"],[data-v5-domain="notices"],[data-v5-domain="supplies"])) .fusion-layer-head {background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
+
+/* 2026-11-08 round 5: task pages keep a plain white banner over a quiet grey-blue
+   ground (focus pages previously used a white ground, merging banner and bg). */
+#fusionLayer.ui-v2.ui-v2-focus,#fusionLayer.ui-v2.ui-v2-focus .fusion-layer-body {background:var(--u2-bg)}
+body.v4-dark #fusionLayer.ui-v2.ui-v2-focus,body.v4-dark #fusionLayer.ui-v2.ui-v2-focus .fusion-layer-body {background:var(--u2-bg)}
+
+/* Apps category bar: five equal chips fill one row — nothing clipped, no scrolling needed. */
+#page-apps .app-catbar {display:flex;flex-wrap:nowrap;overflow-x:visible;gap:5px;padding:4px 12px 10px}
+#page-apps .app-catbar button {flex:1 1 0;min-width:0;min-height:40px;padding:0 4px;border-radius:11px;font-size:12px;white-space:nowrap;text-align:center}
+
+/* 2026-11-08 round 6: breathing room on dashboard/metric pages — chips and tab
+   bars keep distance from the top bar, five tabs share one row, buttons clear cards. */
+#fusionLayer.ui-v2-dashboard .v5-chips,#fusionLayer.ui-v2-metric .v5-chips {margin:12px 2px 13px}
+#fusionLayer.ui-v2-dashboard .v5-tabs,#fusionLayer.ui-v2-metric .v5-tabs {display:flex;margin:12px 2px 14px}
+#fusionLayer.ui-v2-dashboard .v5-tabs button,#fusionLayer.ui-v2-metric .v5-tabs button {flex:1 1 0;min-width:0;padding:10px 4px;font-size:13px;white-space:nowrap;text-align:center}
+#fusionLayer.ui-v2-dashboard .v5-btn,#fusionLayer.ui-v2-metric .v5-btn {margin-top:12px}
+#fusionLayer.ui-v2-dashboard .v5-card .v5-btn:first-child,#fusionLayer.ui-v2-metric .v5-card .v5-btn:first-child {margin-top:0}
+
+/* 2026-11-08 round 7: stacked white selector bars need visible separation. */
+#fusionLayer.ui-v2-dashboard .v5-chips,#fusionLayer.ui-v2-metric .v5-chips {margin:14px 2px 16px}
+#fusionLayer.ui-v2-dashboard .v5-tabs,#fusionLayer.ui-v2-metric .v5-tabs {margin:0 2px 16px}
+#fusionLayer.ui-v2-dashboard .v5-chips:has(+.v5-tabs),#fusionLayer.ui-v2-metric .v5-chips:has(+.v5-tabs) {margin-bottom:16px}
+
+/* 2026-11-08 round 8: assistant family alignment. Content, data, handlers and
+   font families stay in index.html; layout and surfaces only. */
+/* B: head meta sits under the global badge on assistant layers — hide it there too. */
+.fusion-layer:not(:has(.v5-page)) .fusion-layer-head>span {display:none}
+
+/* C: welcome toolbar, model/context config and prompt cards join the v2 card language. */
+#fusionLayer .assistant-tools {position:static;z-index:auto;margin:2px 0 12px;padding:10px 12px;background:#fff;border:1px solid var(--u2-line);border-radius:var(--u2-radius);box-shadow:var(--u2-shadow)}
+#fusionLayer .assistant-tool {min-height:44px;padding:8px 14px;border:1px solid var(--u2-line-blue);border-radius:11px;background:#fff;color:var(--u2-blue);font-size:13px}
+#fusionLayer .assistant-tool.primary {background:var(--u2-blue);border-color:var(--u2-blue);color:#fff;font-weight:600}
+#fusionLayer .assistant-config {display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 8px}
+#fusionLayer .assistant-config button {min-height:56px;padding:9px 12px;text-align:left;background:#fff;border:1px solid var(--u2-line);border-radius:12px;box-shadow:none}
+#fusionLayer .assistant-config button small {color:var(--u2-muted);font-size:10px}
+#fusionLayer .assistant-config button b {display:flex;align-items:center;gap:4px;margin-top:4px;color:var(--u2-ink);font-size:12px}
+#fusionLayer .assistant-cap {display:flex;justify-content:space-between;gap:8px;margin:0 0 12px;padding:8px 12px;border-radius:10px;background:var(--u2-blue-soft);color:var(--u2-blue);font-size:11px}
+#fusionLayer .assistant-v4-prompts {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#fusionLayer .assistant-v4-prompts button {min-height:78px;padding:12px;background:#fff;border:1px solid var(--u2-line);border-radius:14px;box-shadow:var(--u2-shadow)}
+#fusionLayer .assistant-v4-prompts button b {color:var(--u2-ink)}
+#fusionLayer .assistant-v4-prompts button span {color:var(--u2-muted)}
+#fusionLayer .assistant-welcome h2 {color:var(--u2-ink)}
+#fusionLayer .assistant-welcome>p {color:var(--u2-muted)}
+#fusionLayer .assistant-boundary {border-radius:10px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+
+/* D: result thread — narrower user bubble, no bottom occlusion, quiet composer. */
+#fusionLayer .assistant-shell {padding-bottom:104px}
+#fusionLayer .chat-msg.user {max-width:82%}
+#fusionLayer .assistant-compose {background:rgba(247,250,254,.96);border-top:1px solid var(--u2-line)}
+#fusionLayer .assistant-compose input {border:1px solid var(--u2-line-blue);border-radius:12px;background:#fff}
+#fusionLayer .assistant-compose .send-btn {border-radius:12px;background:var(--u2-blue)}
+
+/* A: source reader — toolbar inside the flow, banner/notice/sections as v2 cards. */
+#fusionLayer .v5-source-reader {padding-top:2px}
+#fusionLayer .v5-source-reader .source-reader-top {position:static;z-index:auto;margin:2px 0 14px;padding:0;background:transparent;border:0;box-shadow:none}
+#fusionLayer .source-reader-back {min-height:44px;padding:8px 2px;border:0;background:transparent;color:var(--u2-blue);font-size:13px}
+#fusionLayer .source-ai-btn {min-height:44px;padding:0 16px;border:1px solid var(--u2-line-blue);border-radius:11px;background:#fff;color:var(--u2-blue);font-size:13px;font-weight:600}
+#fusionLayer .v5-source-reader .v5-title {margin:0 2px 12px;padding:13px 16px;background:#fff;border:1px solid var(--u2-line);border-radius:var(--u2-radius);box-shadow:var(--u2-shadow)}
+#fusionLayer .v5-source-reader .v5-title h1 {font-size:20px;color:var(--u2-ink)}
+#fusionLayer .v5-source-reader .v5-title p {color:var(--u2-muted)}
+#fusionLayer .v5-source-reader .v5-notice {margin:0 2px 12px;padding:11px 13px;border:0;border-radius:12px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+#fusionLayer .v5-source-reader .v5-source-original {margin:0 2px 12px;color:var(--u2-blue);font-size:13px}
+#fusionLayer .v5-source-reader .v5-source-section {margin:0 2px 12px;padding:14px 16px;border:1px solid var(--u2-line);border-radius:var(--u2-radius);background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer .v5-source-reader .v5-source-section>small {display:inline-block;padding:2px 8px;border-radius:6px;background:var(--u2-blue-soft);color:var(--u2-blue);font-size:11px}
+#fusionLayer .v5-source-reader .v5-source-section h2 {margin:9px 0 8px;color:var(--u2-ink)}
+#fusionLayer .v5-source-reader .v5-source-section p {color:var(--u2-ink)}
+
+/* Dark mode: cards switch to the dark surface token. */
+body.v4-dark #fusionLayer .assistant-tools,body.v4-dark #fusionLayer .assistant-config button,
+body.v4-dark #fusionLayer .assistant-v4-prompts button,
+body.v4-dark #fusionLayer .v5-source-reader .v5-title,
+body.v4-dark #fusionLayer .v5-source-reader .v5-source-section,
+body.v4-dark #fusionLayer .assistant-compose input {background:var(--u2-card);border-color:var(--u2-line)}
+body.v4-dark #fusionLayer .assistant-cap,body.v4-dark #fusionLayer .assistant-boundary,
+body.v4-dark #fusionLayer .v5-source-reader .v5-notice,
+body.v4-dark #fusionLayer .v5-source-reader .v5-source-section>small {background:var(--u2-blue-soft);color:#B8D5F0}
+body.v4-dark #fusionLayer .assistant-compose {background:rgba(16,25,35,.96)}
+
+/* 2026-11-08 round 9: assistant result-search page joins the same language. */
+#fusionLayer .assistant-shell .v5-return-link {color:var(--u2-blue);font-size:13px}
+#fusionLayer .assistant-shell .v5-title {margin:2px 0 12px;padding:13px 16px;background:#fff;border:1px solid var(--u2-line);border-radius:var(--u2-radius);box-shadow:var(--u2-shadow)}
+#fusionLayer .assistant-shell .v5-title h1 {font-size:20px;color:var(--u2-ink)}
+#fusionLayer .assistant-shell .v5-title p {color:var(--u2-muted)}
+#fusionLayer .assistant-shell .v5-search {display:flex;gap:8px;align-items:center;margin:0 0 10px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+#fusionLayer .assistant-shell .v5-search input {flex:1;min-width:0;min-height:44px;padding:0 12px;border:0;border-radius:12px;background:#fff;color:var(--u2-ink);font-size:16px;box-shadow:inset 0 0 0 1px rgba(225,235,245,.55),0 3px 12px rgba(44,77,120,.025)}
+#fusionLayer .assistant-shell .v5-search button {flex:none;min-width:64px;min-height:44px;padding:0 14px;border:0;border-radius:11px;background:var(--u2-blue);color:#fff}
+#fusionLayer .assistant-shell .v5-caption {color:var(--u2-muted)}
+#fusionLayer .assistant-shell .assistant-doc-link {border:1px solid var(--u2-line);border-radius:12px;background:#fff;box-shadow:var(--u2-shadow)}
+#fusionLayer .assistant-shell .v5-pager {margin:16px 2px 8px;gap:8px}
+#fusionLayer .assistant-shell .v5-pager button {min-height:44px;padding:8px 12px;border:1px solid var(--u2-line);border-radius:11px;background:rgba(255,255,255,.44);color:var(--u2-blue)}
+#fusionLayer .assistant-shell .v5-pager span {color:var(--u2-muted)}
+body.v4-dark #fusionLayer .assistant-shell .v5-title,body.v4-dark #fusionLayer .assistant-shell .assistant-doc-link,
+body.v4-dark #fusionLayer .assistant-shell .v5-search input {background:var(--u2-card);border-color:var(--u2-line)}
+
+/* 2026-11-08 round 10: the decorative in-content status bar (9:41 + signal SVG)
+   is removed everywhere; real devices show the system bar. The head/body offsets
+   that reserved its 44px band are collapsed in internal-v2.css. */
+.dp-status,.leave-application-status {display:none!important}
+
+/* 2026-11-08 round 13: WeChat mobile full-bleed. 100vw can compute wider than the
+   visible viewport in X5/WK webviews, leaving a white strip beside the left-aligned
+   phone shell. Use parent-relative 100% and clamp overflow on real phones. */
+@media(max-width:499px){
+  html,body{width:100%;overflow-x:hidden}
+  body .phone{width:100%!important;max-width:100%!important}
+}
+
+/* 2026-11-08 round 14: assistant composer sits in the flow (sticky to the visible
+   bottom), not an absolute overlay with a reserved band — no more detached gap.
+   With interactive-widget=resizes-content the keyboard pushes it up on focus. */
+#fusionLayer .assistant-shell {min-height:100%;display:flex;flex-direction:column;padding-bottom:10px}
+#fusionLayer .chat-thread {flex:1;padding-bottom:12px}
+#fusionLayer .assistant-shell .assistant-compose-wrap {position:sticky!important;bottom:0!important;margin-top:auto!important;z-index:6}
+#fusionLayer .assistant-shell .assistant-compose {position:sticky!important;bottom:0!important}
+#fusionLayer .assistant-shell .assistant-compose {left:auto!important;right:auto!important;margin-top:auto!important}
+#fusionLayer:has(.assistant-shell) .fusion-layer-body {padding-bottom:0}
+#fusionLayer:has(.assistant-shell) .fusion-layer-body {display:flex;flex-direction:column}
+#fusionLayer .assistant-root,#fusionLayer #assistantRoot {flex:1;display:flex;flex-direction:column;min-height:0}
+#fusionLayer .assistant-shell {flex:1}
+
+/* 2026-11-08 round 15: source reader action hierarchy — back link alone on the nav
+   row, 查看要点 as the page's primary action inside the banner card, the public
+   original link folded into the source notice card. */
+#fusionLayer .v5-source-reader .source-reader-top {margin:2px 0 10px}
+#fusionLayer .source-reader-back {padding:10px 2px;font-size:13px}
+#fusionLayer .v5-source-reader .v5-title .source-ai-btn {display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:12px;padding:0 16px;border:0;border-radius:11px;background:var(--u2-blue);color:#fff;font-size:14px;font-weight:600}
+#fusionLayer .v5-source-reader .v5-notice .v5-source-original {margin:9px 0 0;padding:9px 0 0;border-top:1px solid rgba(21,82,163,.16);min-height:36px;font-size:13px}
+body.v4-dark #fusionLayer .v5-source-reader .v5-title .source-ai-btn {background:#8eb9ea;color:#10222f}
+body.v4-dark #fusionLayer .v5-source-reader .v5-notice .v5-source-original {border-top-color:rgba(184,213,240,.25)}
