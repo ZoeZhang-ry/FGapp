@@ -1,3 +1,5 @@
+2026年11月9日UI规范V2.0完整包交付：按原始背景材料《发改APP统一形象及UI规范_V1.0完整包》同构更新V2.0（交付包/发改APP统一形象及UI规范_V2.0完整包/ +同名zip，159条目与V1.0一一对齐）。内容：离线index.html规范器22章节（总览/形象/色彩/语义深色/字阶/图标/布局/导航/按钮/输入/卡片/助手族/状态/确认/入口目录/列表/详情/申请/阅读/监测/移动化/交付），色块点击复制、组件属性面板、图标SVG下载；design-tokens.json+tokens.css（--fgw2-*前缀，含changesFromV1差异清单：主色#1552A3、冷白底、蓝渐变顶栏67px、列表族组件、白卡banner、毛玻璃首页、满宽防微信白条、假状态栏移除、bundle交付等）；图标沿用V1（1.8线性）；screens取自版本二qa实测；preview 22页PNG由规范器渲染；评审版PDF由逐页合成（845KB）。规范口径为浏览器原型，真机与正式验收待执行。
+
 2026年11月8日第十九轮（用户确认采纳A方案）：首页顶部问候横幅一次性晨光扫过正式上线——.v6-header::after斜向光带110deg微倾1.8s，加载0.7s后触发，浅色白95/65双高光、深色淡蓝60/40；每日一次播放门（localStorage v6HeaderShineDay按日期判定，body.v6-shine-off关闭），prefers-reduced-motion自动关闭；头像40px首版被否（太小），放大到整条横幅后用户确认。bundle版本参数v20261108d。chk22验证当日首次播放/再次加载抑制/单位名不变ALL PASS；chk8/10/16/17/20/round5/entry-titles回归通过。已推送FGapp。
 
 2026年11月8日第十八轮：首页待办宫格新增通栏“请休假申请”入口磁贴（plane图标+名称+右箭头，样式同宫格主题色，openAppV3('leave')直达表单；申领槽位保持隐藏逻辑不变）。grid-column:1/-1通栏、底边线去除。chk21 ALL PASS（五项可见、请休假显示且申领隐藏、点击直达leave-application层、390无溢出、深色截图正常），chk16/17/20/round5/entry-titles回归通过，截图r21-leave-tile.png。已推送FGapp。仅Edge仿真，未实机。
