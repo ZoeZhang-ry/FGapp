@@ -1,3 +1,11 @@
+2026年11月8日第十九轮（用户确认采纳A方案）：首页顶部问候横幅一次性晨光扫过正式上线——.v6-header::after斜向光带110deg微倾1.8s，加载0.7s后触发，浅色白95/65双高光、深色淡蓝60/40；每日一次播放门（localStorage v6HeaderShineDay按日期判定，body.v6-shine-off关闭），prefers-reduced-motion自动关闭；头像40px首版被否（太小），放大到整条横幅后用户确认。bundle版本参数v20261108d。chk22验证当日首次播放/再次加载抑制/单位名不变ALL PASS；chk8/10/16/17/20/round5/entry-titles回归通过。已推送FGapp。
+
+2026年11月8日第十八轮：首页待办宫格新增通栏“请休假申请”入口磁贴（plane图标+名称+右箭头，样式同宫格主题色，openAppV3('leave')直达表单；申领槽位保持隐藏逻辑不变）。grid-column:1/-1通栏、底边线去除。chk21 ALL PASS（五项可见、请休假显示且申领隐藏、点击直达leave-application层、390无溢出、深色截图正常），chk16/17/20/round5/entry-titles回归通过，截图r21-leave-tile.png。已推送FGapp。仅Edge仿真，未实机。
+
+2026年11月8日第十七轮（样式三段变脸修复，用户反馈）：微信打开先见版本一旧缓存、再逐份应用8个外部样式表出现中间残风、最后才是当前版。两类根因：微信/Pages缓存旧HTML即时先显；弱网下逐份CSS到达逐次重绘。修复：8个样式表按原级联顺序合并为单一assets/v2-bundle.css（101KB，一次请求一次成形），index.html改为单链接+版本参数?v=20261108a，旧缓存不再逐份生效。chk20验证单链接/无失败请求/搜索钮dp钮深色等关键样式全部最终值，chk8/10/12/16/17/19/round5/entry-titles/hero（断言同步webp引用）全PASS。已推送FGapp，Pages部署后微信下拉刷新即可。
+
+2026年11月8日第十六轮（背景图加载优化，用户反馈链接打开慢）：首页背景原为1024x2256 PNG共1.28MB（照片式渐变内容PNG压缩率极低）。从用户原始素材重新生成：裁除水印与下部近白冗余区、底部260px做alpha渐隐（与页面底色无缝，无CSS接缝）、转WebP q82——home-bg-fade.webp仅35KB（缩小97%），删除旧home-bg.png，CSS引用同步。本地加载12ms，视觉截图对比无差异（r19-home-webp.png），chk19断言引用与资源加载ALL PASS。已提交推送FGapp，Pages部署后生效。GitHub Pages在国内直连本身偏慢，缩小97%后配合微信缓存基本秒开。
+
 2026年11月8日第十五轮（阅读页动作层级重设计，用户反馈割裂）：返回资料清单独占导航行（纯文字链）；查看要点移入标题白卡内部作为页面唯一主操作（通栏44px主蓝实心）；打开公开原件并入来源通知卡（卡片内带分隔线动作行），不再漂浮。模板仅重排展示节点，文字、href/target与onclick处理器逐字保留（chk18断言处理器原文）。非公开文档无原件链接时来源卡正常。chk18 ALL PASS，chk8/chk17/round5/entry-titles回归通过，截图r18-reader.png。仅Edge仿真，未实机，未发布。
 
 2026年11月8日第十三轮（微信白边）：用户微信打开页面一侧露白。根因：手机壳方案用100vw收口，X5/WK内核中100vw可比可见视口宽数像素，html无底色而.phone左对齐，差值露白。修复ui-v2-system.css：≤499px时html/body宽100%+overflow-x hidden，.phone强制100%/100%（含:has的390px定宽页）。chk16实测375/390/393/412/428五宽度phone满宽、文档无横向溢出、公文列表页同样满宽，ALL PASS。已提交fd8b8c9并推送FGapp（origin仓库迁移提示无碍），Pages自动部署。仅模拟验证，微信真机待用户确认。
