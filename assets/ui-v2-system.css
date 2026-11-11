@@ -254,6 +254,15 @@ body.v4-dark #fusionLayer.ui-v2.ui-v2-focus,body.v4-dark #fusionLayer.ui-v2.ui-v
 #fusionLayer .assistant-welcome h2 {color:var(--u2-ink)}
 #fusionLayer .assistant-welcome>p {color:var(--u2-muted)}
 #fusionLayer .assistant-boundary {border-radius:10px;background:var(--u2-blue-soft);color:var(--u2-blue)}
+/* Quick-topic rail floats above the composer on welcome and conversation views. */
+#fusionLayer .assistant-dock {position:sticky;bottom:0;margin-top:auto;padding:8px 2px 0;background:rgba(247,250,254,.94);border-top:1px solid var(--u2-line)}
+#fusionLayer .assistant-quick-topics {display:flex;gap:8px;padding:2px 2px 8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+#fusionLayer .assistant-quick-topics::-webkit-scrollbar {display:none}
+#fusionLayer .assistant-quick-topics button {flex:0 0 auto;min-height:42px;padding:0 16px;border:1px solid var(--u2-line-blue);border-radius:999px;background:#fff;color:var(--u2-blue);font-size:13px;font-weight:600;display:inline-flex;align-items:center;box-shadow:0 1px 2px rgba(31,66,135,.06);transition:transform .12s ease,background-color .12s ease}
+#fusionLayer .assistant-quick-topics button:active {transform:scale(.96);background:var(--u2-blue-soft)}
+#fusionLayer .assistant-quick-topics button:focus-visible {outline:2px solid var(--u2-blue);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){#fusionLayer .assistant-quick-topics button {transition:none}}
+@media (prefers-reduced-motion: reduce){#fusionLayer .assistant-quick-topics button:active {transform:none}}
 
 /* D: result thread — narrower user bubble, no bottom occlusion, quiet composer. */
 #fusionLayer .assistant-shell {padding-bottom:104px}
@@ -287,6 +296,8 @@ body.v4-dark #fusionLayer .assistant-cap,body.v4-dark #fusionLayer .assistant-bo
 body.v4-dark #fusionLayer .v5-source-reader .v5-notice,
 body.v4-dark #fusionLayer .v5-source-reader .v5-source-section>small {background:var(--u2-blue-soft);color:#B8D5F0}
 body.v4-dark #fusionLayer .assistant-compose {background:rgba(16,25,35,.96)}
+body.v4-dark #fusionLayer .assistant-quick-topics button {background:var(--u2-card);border-color:var(--u2-line)}
+body.v4-dark #fusionLayer .assistant-dock {background:rgba(16,25,35,.94)}
 
 /* 2026-11-08 round 9: assistant result-search page joins the same language. */
 #fusionLayer .assistant-shell .v5-return-link {color:var(--u2-blue);font-size:13px}
@@ -350,3 +361,17 @@ body.v4-dark .v6-header::after{background:linear-gradient(110deg,transparent 34%
 
 /* Shine plays once per day: body class set by a storage check in index.html. */
 body.v6-shine-off .v6-header::after{animation:none;content:none}
+
+#fusionLayer .assistant-v4-prompts.single button {grid-column:1/-1;justify-self:center;width:calc(50% - 5px);text-align:center}
+#pvFlow .lf-who{display:inline-block;margin:2px 0;padding:2px 8px;border-radius:6px;background:#eef4ff;color:#1765e8;font-size:12px}
+
+.dp-row-meta .dp-due{display:inline-flex;align-items:center;margin-right:2px;padding:2px 7px;border-radius:6px;font-size:11px;font-weight:600}
+.dp-row-meta .dp-due.soon{background:#EAF5EF;color:#1E7B4F}
+.dp-row-meta .dp-due.late{background:#FDF0EF;color:#C93030}
+
+.dp-filters{position:relative}
+.dp-event-menu{position:absolute;top:calc(100% + 4px);left:2px;right:2px;z-index:40;background:#fff;border:1px solid var(--u2-line,#e9edf5);border-radius:12px;box-shadow:0 10px 28px rgba(16,32,58,.16);display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:6px}
+.dp-event-menu button{min-height:40px;padding:8px 10px;border:0;border-radius:9px;background:transparent;color:var(--u2-ink,#142039);font:inherit;font-size:13.5px;text-align:left;cursor:pointer;white-space:nowrap}
+.dp-event-menu button:active{background:var(--u2-blue-soft,#edf3ff)}
+.dp-event-menu button.on{background:var(--u2-blue-soft,#edf3ff);color:var(--u2-blue,#1765e8);font-weight:600}
+body.v4-dark .dp-event-menu{background:var(--u2-card,#182431);border-color:var(--u2-line,#2a3648)}
