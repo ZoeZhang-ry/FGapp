@@ -3556,7 +3556,7 @@ newAssistantConversation=function(){assistantState.currentId=null;assistantState
 };
 function v5AssistantCard(doc){
  const focus=v4MinePrefs.docFocus,detail=focus==='原文依据'?doc.pages[0][1]:focus==='来源与版本'?`${doc.source} · ${doc.date}`:doc.summary;
- return `<button class="assistant-doc-link" onclick="openAssistantSource('${doc.id}')"><span>${contextNames([doc.context])[0]} · ${doc.public?'公开来源':'本地仿真'}</span><b>${esc(doc.title)}</b><p>${esc(detail)}</p><em>依据：本地${doc.public?'摘要':'材料'}第1节 · ${esc(doc.pages[0][0])} ›</em></button>`;
+ return `<button class="assistant-doc-link" onclick="openAssistantSource('${doc.id}')"><span>${contextNames([doc.context])[0]}</span><b>${esc(doc.title)}</b><p>${esc(detail)}</p></button>`;
 }
 function v5AssistantResultHtml(result,all=false){
  const total=result.total??result.items.length,limit=v4MinePrefs.answerStyle==='简明直接'?3:v4MinePrefs.answerStyle==='完整分析'?6:4;
