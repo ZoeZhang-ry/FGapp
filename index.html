@@ -4474,6 +4474,7 @@ function v6HomeTasks(filter='priority',now=new Date()){
  if(filter==='done')return all.filter(item=>item.status==='done');
  let pending=all.filter(item=>item.status==='pending');
  if(filter==='today')pending=pending.filter(item=>item.status==='pending'&&!!item.dueAt&&!!V5_DUE_DOMAINS[item.domain]);
+ if(filter==='today')return pending.sort((a,b)=>(a.dueAt?new Date(a.dueAt).getTime():Infinity)-(b.dueAt?new Date(b.dueAt).getTime():Infinity)||a.id.localeCompare(b.id));
  if(filter==='urgent')pending=pending.filter(item=>item.domain==='docs'&&(item.urgency==='加急'));
  if(filter==='priority')pending=pending.filter(item=>item.domain==='docs'&&(item.urgency==='特急'||item.urgency==='特提'));
  const rank=item=>(item.urgency==='特急'||item.urgency==='特提')?0:item.urgency==='加急'?1:2;
