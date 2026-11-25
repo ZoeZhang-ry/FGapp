@@ -3754,6 +3754,11 @@ const v5Pending=domain=>V5.records.filter(r=>r.domain===domain&&r.status==='pend
 const v5Record=id=>V5.records.find(r=>r.id===id);
 const v5App=id=>FUSION_APPS.find(a=>a.id===id);
 const v5DocCategory=item=>item&&item.type==='发文'?'发文':item&&item.type==='内呈件'?'内呈件':'阅件';
+function v5ListFilters(domain,records){
+ records=records||V5.records.filter(item=>item.domain===domain);
+ if(domain==='docs')return ['全部','发文','内呈件','阅件'];
+ return ['全部',...new Set(records.map(item=>domain==='projects'?(item.eventType||item.type):item.type))];
+}
 const v5Badge=(text,tone='')=>`<span class="v5-badge ${tone}">${v5E(text)}</span>`;
 const v5Btn=(text,action,kind='')=>`<button class="v5-btn ${kind}" onclick="${action}">${text}</button>`;
 const v5Fields=pairs=>`<dl class="v5-fields">${pairs.filter(p=>p[1]!==undefined&&p[1]!==null).map(([k,v])=>`<div><dt>${v5E(k)}</dt><dd>${v5E(v)}</dd></div>`).join('')}</dl>`;
@@ -3968,7 +3973,7 @@ function v5ListData(r){
  if(r.mode==='pending')records=records.filter(item=>item.status==='pending');
  if(r.mode==='done')records=records.filter(item=>item.status==='done');
  if(r.mode==='mine')records=records.filter(item=>item.mine);
- if(r.filter&&r.filter!=='全部')records=records.filter(item=>item.type===r.filter||item.eventType===r.filter||item.stage===r.filter||item.researchStage===r.filter);
+ if(r.filter&&r.filter!=='全部')records=records.filter(item=>r.domain==='docs'?v5DocCategory(item)===r.filter:(item.type===r.filter||item.eventType===r.filter||item.stage===r.filter||item.researchStage===r.filter));
  if(r.query){const q=r.query.toLowerCase();records=records.filter(item=>[item.title,item.number,item.department,item.type,item.businessStatus].join(' ').toLowerCase().includes(q))}
  return records;
 }
@@ -3976,10 +3981,7 @@ function v5ListPage(r){
  const domain=r.domain;if(domain==='projects'&&!r.mode)r.mode='pending';all=V5.records.filter(item=>item.domain===domain),pending=all.filter(item=>item.status==='pending').length,done=all.filter(item=>item.status==='done').length;
  const records=v5ListData(r),pageSize=6,pages=Math.max(1,Math.ceil(records.length/pageSize));r.page=Math.min(r.page||1,pages);
  const notice=domain==='notices',tabs=notice?[['pending','未读'],['done','已读'],['all','全部通知']]:domain==='projects'?[['pending','待办'],['mine','我的'],['all','全部']]:r.origin==='home'?[['pending','待处理'],['done','本人已办']]:[['pending','待办'],['done','已办'],['mine','我的'],['all','全部']];
- let filters=['全部',...new Set(all.map(item=>domain==='projects'?(item.eventType||item.type):item.type))];
- /* 公文筛选栏删除“平件”：缓急程度改由列表行标签体现 */
- if(domain==='docs')filters=filters.filter(f=>f!=='平件');
- console.log('[dbg] filters built',domain,JSON.stringify(filters));
+ const filters=v5ListFilters(domain,all);
  if(v5UsesHomeListSkin(r))return v5HomeListPage(r,{records,pageSize,pages,pending,done,filters,tabs,total:all.length});
  return `<div class="v5-list-caption">${notice?'阅读与参会反馈分别记录，需反馈的会议保留至反馈完成。':r.origin==='home'?'按当前人员办理范围查看事项':v5E(v5App(r.appId)?.group||'我的工作')}</div><div class="v5-tabs">${tabs.map(([key,label])=>`<button class="${r.mode===key?'on':''}" onclick="v5ListMode('${key}')">${label}<em>${key==='pending'?pending:key==='done'?done:key==='mine'?all.filter(x=>x.mine).length:all.length}</em></button>`).join('')}</div><form class="v5-search" onsubmit="event.preventDefault();v5Search(this.querySelector('input').value)"><input name="query" aria-label="搜索事项" value="${v5E(r.query||'')}" placeholder="搜索标题、编号、处室"><button type="submit">搜索</button></form><div class="v5-chips">${filters.map((filter,i)=>`<button class="${r.filter===filter?'on':''}" onclick="v5Filter(${i})">${v5E(filter)} ${v5ListData({...r,filter,query:''}).length}</button>`).join('')}</div><div class="v5-list">${records.slice((r.page-1)*pageSize,r.page*pageSize).map(item=>v5RecordRow(item,r)).join('')||v5Empty()}</div><div class="v5-pager"><button onclick="v5Page(-1)" ${r.page===1?'disabled':''}>‹ 上一页</button><span>${r.page} / ${pages} 页 · 共${records.length}条</span><button onclick="v5Page(1)" ${r.page===pages?'disabled':''}>下一页 ›</button></div>`;
 }
@@ -3992,7 +3994,7 @@ function v5HomeListPage(r,{records,pageSize,pages,pending,done,filters,tabs,tota
 
  const statusBar=`<div class="dp-status" aria-hidden="true"><span>9:41</span><svg viewBox="0 0 72 18" fill="none"><path d="M2 13v2M7 10v5M12 7v8M17 3v12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M27 6q8-7 16 0M30 9q5-4 10 0M33 12q2-2 4 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><rect x="50" y="3" width="19" height="12" rx="2.5" stroke="currentColor"/><rect x="52" y="5" width="15" height="8" rx="1" fill="currentColor"/><path d="M71 7v4" stroke="currentColor"/></svg></div>`;
  const rows=records.slice((r.page-1)*pageSize,r.page*pageSize).map(item=>{
-   if(item.domain!=='projects'){const docUrgency=item.urgency||'平件',docKind=item.domain==='docs'?`<span class="dp-doc-kind">| ${v5E(v5DocCategory(item))}</span>`:'',draftName=item.docMeta?item.docMeta.drafter:item.outgoingMeta?item.outgoingMeta.drafter:item.department+' · '+['张明','李华','王芳','刘强','陈静','赵磊','周婷','吴军','郑浩','孙丽','马涛','高原'][(parseInt((item.id+'').replace(/[^0-9]/g,'')||'0')-1)%12];return `<button class="dp-row" data-record="${item.id}" onclick="v5OpenDetail('${item.id}')"><span class="dp-row-meta"><span class="dp-type${item.domain==='docs'?' dp-urg '+(item.urgency==='特急'||item.urgency==='特提'?'urg-high':item.urgency==='加急'?'urg-mid':''):''}">${v5E(item.domain==='docs'?docUrgency:item.type)}</span>${docKind}<time>${v5E(item.date)}</time></span><strong>${v5E(item.title)}</strong><span class="dp-row-footer">${item.domain==='docs'?('拟稿人：'+draftName):(v5E(item.department)+' · '+v5E(item.businessStatus))}</span><span class="dp-row-arrow" aria-hidden="true">${ficon('back')}</span></button>`}
+   if(item.domain!=='projects'){const docUrgency=item.urgency||'平件',docKind=item.domain==='docs'?`<span class="dp-doc-kind">| ${v5E(v5DocCategory(item))}</span>`:'',draftName=item.domain==='docs'&&window.d3DrafterForList?window.d3DrafterForList(item):(item.docMeta?item.docMeta.drafter:item.outgoingMeta?item.outgoingMeta.drafter:item.department+' · '+['张明','李华','王芳','刘强','陈静','赵磊','周婷','吴军','郑浩','孙丽','马涛','高原'][(parseInt((item.id+'').replace(/[^0-9]/g,'')||'0')-1)%12]);return `<button class="dp-row" data-record="${item.id}" onclick="v5OpenDetail('${item.id}')"><span class="dp-row-meta"><span class="dp-type${item.domain==='docs'?' dp-urg '+(item.urgency==='特急'||item.urgency==='特提'?'urg-high':item.urgency==='加急'?'urg-mid':''):''}">${v5E(item.domain==='docs'?docUrgency:item.type)}</span>${docKind}<time>${v5E(item.date)}</time></span><strong>${v5E(item.title)}</strong><span class="dp-row-footer">${item.domain==='docs'?('拟稿人：'+draftName):(v5E(item.department)+' · '+v5E(item.businessStatus))}</span><span class="dp-row-arrow" aria-hidden="true">${ficon('back')}</span></button>`}
   /* 项目待办OA口径：待办句式标题；列表标签与详情页保持一致（事项类型 + 办理状态），
      项目没有截止时间限制，不出现时间与逾期标签 */
   const isAll=r.mode==='all',pending=item.status==='pending';
@@ -4020,7 +4022,7 @@ function v5RecordRow(item,r={}){
  return `<button class="v5-row" data-record="${item.id}" onclick="v5OpenDetail('${item.id}')"><span class="v5-row-top">${v5Badge(item.type)}${v5Badge(status,item.status==='done'?'good':item.stage.includes('补')?'warn':'muted')}<time>${item.date}</time></span><strong>${v5E(item.title)}</strong>${item.domain==='projects'?`<div class="v5-progress"><i style="width:${item.progress}%"></i></div>`:''}<span class="v5-row-footer"><span>${v5E(item.department)} · ${v5E(item.domain==='projects'?`进度 ${item.progress}% · ${item.issue}`:item.businessStatus)}</span><b>›</b></span></button>`;
 }
 function v5ListMode(mode){V5.route.mode=mode;V5.route.filter='全部';V5.route.page=1;V5.route.scroll=0;v5Render()}
-function v5Filter(index){const r=V5.route;const all=V5.records.filter(item=>item.domain===r.domain);r.filter=['全部',...new Set(all.map(x=>x.domain==='projects'?(x.eventType||x.type):x.type))][index];r.page=1;r.scroll=0;v5Render()}
+function v5Filter(index){const r=V5.route;const all=V5.records.filter(item=>item.domain===r.domain);r.filter=v5ListFilters(r.domain,all)[index]||'全部';r.page=1;r.scroll=0;v5Render()}
 function v5Search(query){V5.route.query=query.trim();V5.route.page=1;V5.route.scroll=0;v5Render()}
 function v5Page(delta){V5.route.page+=delta;V5.route.scroll=0;v5Render()}
 function v5OpenDetail(id){const item=v5Record(id);if(item)v5Navigate({view:'detail',id,appId:V5.route?.appId,title:item.domain==='projects'?'项目详情':item.domain==='notices'?'通知详情':'事项详情',tab:item.domain==='projects'?'approval':'overview'})}
@@ -5900,6 +5902,8 @@ var DEPTS=['委领导','秘书处','机关党委（人事处）','经济运行�
 var STAFF=['王晓','李海涛','张敏','刘洋','陈静','赵磊','周婷','吴建国','郭ZP','马涛','孙丽','高原'];
 var STAGES=['上会','结束流程','部门审核','分管领导审核','委主任审批'];
 var D3_PHRASES=['已核，请相关同志审核。','同意，请按程序办理。','请相关处室依职责推进落实市领导批示指示，每个反馈周期最后一周周四24:00前反馈进展情况。','请责任处室抓紧办理并及时反馈进展情况。'];
+/* 拟稿人权限演示：全部公文中仅保留2条由本账户拟稿，其余均为其他测试人员。 */
+var D3_CURRENT_DRAFTER_IDS={'doc-1':true,'doc-3':true};
 function q(id){return document.getElementById(id)}
 function esc(x){return v5E(String(x==null?'':x))}
 
@@ -5915,7 +5919,7 @@ function d3EnsureItem(it){
  var fileType=it.docMeta&&it.docMeta.fileType||d3InferFileType(it),urg=it.urgency||it.docMeta&&it.docMeta.urg||'平件';
  var people=['张明','李欣','周宁','陈晨','赵敏'],person=people[Math.abs(parseInt(String(it.id).replace(/\D/g,''),10)||0)%people.length];
  var meta=it.docMeta||(it.docMeta={});
- if(it.status==='pending'&&!it.__drafterOwnershipSet){meta.drafter='投资处 · 测试用户';it.__drafterOwnershipSet=true}else meta.drafter=meta.drafter||String(it.department||'业务处室')+' · '+person;
+ if(!it.__drafterIdentitySet){meta.drafter=D3_CURRENT_DRAFTER_IDS[it.id]?'投资处 · 测试用户':(meta.drafter&&!/测试用户\s*$/.test(meta.drafter)?meta.drafter:String(it.department||'业务处室')+' · '+person);it.__drafterIdentitySet=true}else meta.drafter=meta.drafter||String(it.department||'业务处室')+' · '+person;
  meta.draftAt=meta.draftAt||String(it.date||'2026-11-03')+' 09:20';
  meta.fileType=fileType;meta.urg=urg;meta.meet=meta.meet||'不上会';meta.secret=meta.secret||it.secret||'公开';
  meta.csDepts=Array.isArray(meta.csDepts)?meta.csDepts:['投资处'];
@@ -5939,7 +5943,7 @@ function d3InferOutgoingType(it){
 function d3EnsureOutgoing(it){
  if(!it)return it;
  var meta=it.outgoingMeta||(it.outgoingMeta={}),idx=Math.abs(parseInt(String(it.id).replace(/\D/g,''),10)||0),people=['张明','李华','王芳','刘强','陈静'];
- meta.drafter=meta.drafter||(it.status==='pending'?'投资处 · 测试用户':String(it.department||'业务处室')+' · '+people[idx%people.length]);meta.draftAt=meta.draftAt||String(it.date||'2026-11-03')+' 09:20';
+ if(!it.__drafterIdentitySet){meta.drafter=D3_CURRENT_DRAFTER_IDS[it.id]?'投资处 · 测试用户':String(it.department||'业务处室')+' · '+people[idx%people.length];it.__drafterIdentitySet=true}else meta.drafter=meta.drafter||String(it.department||'业务处室')+' · '+people[idx%people.length];meta.draftAt=meta.draftAt||String(it.date||'2026-11-03')+' 09:20';
  meta.docNumber=meta.docNumber||it.number||'—';meta.secret=meta.secret||it.secret||'公开';meta.issueRange=meta.issueRange||'市工业和信息化局（2份）、市财政局（2份）、福田区发展改革局（2份）、南山区发展改革局（2份）、宝安区发展改革局（2份）、龙岗区发展改革局（2份），共发行12份';
  meta.fileType=meta.fileType||d3InferOutgoingType(it);meta.publicType=meta.publicType||['主动公开','依申请公开','不公开'][idx%3];meta.publicRelation=meta.publicRelation||'不关联';meta.meet=meta.meet||'不上会';
  meta.csDepts=Array.isArray(meta.csDepts)?meta.csDepts:['投资处'];meta.csEnd=meta.csEnd||'2026-11-08 18:00';meta.qzDepts=Array.isArray(meta.qzDepts)?meta.qzDepts:['法规监督处（公共资源交易办）'];meta.qzEnd=meta.qzEnd||'2026-11-10 18:00';
@@ -5962,7 +5966,8 @@ function d3AttachmentList(it,note){
 }
 function d3DocumentBody(it){return '<button class="v5-attachment" onclick="v5Read(\''+it.id+'\',-1)"><i>PDF</i><span>'+esc((it.title||'公文正文')+'.pdf')+'<small>公文正文 · 本地仿真 PDF</small></span><b>›</b></button>'}
 function d3SelectField(name,label,value,options){return '<label class="v5-field"><span>'+label+'</span><select name="'+name+'">'+options.map(function(option){return '<option value="'+esc(option)+'"'+(option===value?' selected':'')+'>'+esc(option)+'</option>'}).join('')+'</select></label>'}
-function d3IsCurrentDrafter(meta){return !!meta&&String(meta.drafter||'').indexOf('测试用户')>-1}
+function d3IsCurrentDrafter(meta){return !!meta&&/(^|·\s*)测试用户\s*$/.test(String(meta.drafter||''))}
+window.d3DrafterForList=function(it){if(!it||it.domain!=='docs')return '';if(it.type==='内呈件')return d3EnsureItem(it).docMeta.drafter;if(it.type==='发文')return d3EnsureOutgoing(it).outgoingMeta.drafter;return String(it.department||'综合处室G')+' · '+['测试A','测试B','测试C','测试D'][Math.abs(parseInt(String(it.id).replace(/\D/g,''),10)||0)%4]};
 function d3InnerEditForm(it){
  var m=it.docMeta,toLocal=function(value){return String(value||'').replace(' ','T')};
  return '<form id="d3InnerForm" class="d3-outgoing-form" onsubmit="event.preventDefault();docInnerSave()"><div id="d3InnerError" class="v5-error" role="alert"></div><div class="v5-form-grid">'
